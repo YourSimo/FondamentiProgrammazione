@@ -4,7 +4,7 @@
   <class id="1" language="java" name="it.unibs.ing.fp.lonelyhearts.LonelyHeart" project="FondamentiProgrammazione" 
     file="/FondamentiProgrammazione/src/it/unibs/ing/fp/lonelyhearts/LonelyHeart.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="399" y="204"/>    
+    <position height="-1" width="-1" x="151" y="114"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -14,7 +14,7 @@
   <class id="2" language="java" name="it.unibs.ing.fp.lonelyhearts.LonelyHeartMain" project="FondamentiProgrammazione" 
     file="/FondamentiProgrammazione/src/it/unibs/ing/fp/lonelyhearts/LonelyHeartMain.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="130" y="198"/>    
+    <position height="-1" width="-1" x="451" y="168"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -23,7 +23,7 @@
   </class>  
   <enumeration id="3" language="java" name="it.unibs.ing.fp.lonelyhearts.Zodiaco" project="FondamentiProgrammazione" 
     file="/FondamentiProgrammazione/src/it/unibs/ing/fp/lonelyhearts/Zodiaco.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="709" y="202"/>    
+    <position height="-1" width="-1" x="144" y="462"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
