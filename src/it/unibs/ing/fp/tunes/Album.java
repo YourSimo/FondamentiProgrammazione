@@ -3,16 +3,17 @@ package it.unibs.ing.fp.tunes;
 import java.util.Vector;
 
 /**
- * Class Album
+ * <h1> Class Album </h1>
+ * <p>
  * 
  * @author Federico Avino 
  * @author Matteo Bellicini 
  * @author Simone Cavicchioli
  * 
- * @version v1.0
+ * @version v1.1
  * @since 2016-04-26
- *
  */
+
 public class Album {
 	private final static String MSG_ALBUM = "Titolo album: %s%nArtista album: %s%nCanzoni: ";
 	private final static String FORMAT = "%n%s; ";
@@ -42,7 +43,7 @@ public class Album {
 	}
 	
 	/**
-	 * Match song
+	 * Match song.
 	 * @param search The song of research
 	 * @return <tt>true </tt> if the name of song exist
 	 */

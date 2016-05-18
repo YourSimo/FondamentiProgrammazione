@@ -6,16 +6,17 @@ import it.unibs.ing.fp.library.InputData;
 import it.unibs.ing.fp.math.Casuale;
 
 /**
- * Class CDCollection
+ * <h1> Class CDCollection </h1>
+ * <p>
  * 
  * @author Federico Avino 
  * @author Matteo Bellicini 
  * @author Simone Cavicchioli
  * 
- * @version v1.0
+ * @version v1.1
  * @since 2016-04-26
- *
  */
+
 public class CDCollection {
 	
 	private final static String MSG_NEW_TITLE = "Inserisci il titolo dell'album da aggiungere: ";
@@ -37,15 +38,15 @@ public class CDCollection {
 	// private int totalCost;
 	
 	/**
-	 * Constructor
+	 * Constructor.
 	 */
 	public CDCollection() {
 		collection = new Vector<Album>();
 	}
 	
 	/**
-	 * Get number album
-	 * @return the number of album
+	 * Returns the number of album.
+	 * @return dimentions
 	 */
 	public int getNumberAlbum() {
 		return collection.size();

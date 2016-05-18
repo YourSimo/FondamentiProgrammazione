@@ -4,16 +4,17 @@ import it.unibs.ing.fp.library.InputData;
 import it.unibs.ing.fp.library.Menu;
 
 /**
- * Class TunesMain
+ * <h1> Class TunesMain </h1>
+ * <p>
  * 
  * @author Federico Avino 
  * @author Matteo Bellicini 
  * @author Simone Cavicchioli
  * 
- * @version v1.0
+ * @version v1.1
  * @since 2016-04-26
- *
  */
+
 public class TunesMain {
 	
 	final private static String INTRO = "\nProgramma per la gestione dell'Archivio CD\n\n";
