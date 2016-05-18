@@ -109,6 +109,23 @@ public class InputData {
 		return readValue;
 	}
 	
+	// Metodo ReadDoubleWithLimit
+	public static double readDoubleWithLimit(String message, double min, double max) {
+		boolean finish = false;
+		double readValue = 0;
+		do {
+			System.out.print(message);
+			if (reader.hasNextDouble()) {
+				readValue = reader.nextDouble();
+				if (readValue >= min && readValue <= max) finish = true;
+			} else {
+				System.out.println(ERRORE_LIMITI + min + "-" + max);
+				String trashing = reader.next();
+			}
+		} while (!finish);
+		return readValue;
+	}
+	
 	// Metodo ReadChar
 	public static char readChar(String message) {
 		boolean finish = false;
