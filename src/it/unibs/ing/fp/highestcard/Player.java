@@ -23,12 +23,23 @@ public class Player {
 		this.setBalance(balance);
 	}
 	
+	// Getters
+	
 	/**
 	 * @return the nickname
 	 */
 	public String getNickname() {
 		return nickname;
 	}
+	
+	/**
+	 * @return the balance
+	 */
+	public double getBalance() {
+		return balance;
+	}
+	
+	// Setters
 
 	/**
 	 * @param nickname - The nickname to set
@@ -36,14 +47,7 @@ public class Player {
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
 	}
-
-	/**
-	 * @return the balance
-	 */
-	public double getBalance() {
-		return balance;
-	}
-
+	
 	/**
 	 * @param balance - The balance to set
 	 */
