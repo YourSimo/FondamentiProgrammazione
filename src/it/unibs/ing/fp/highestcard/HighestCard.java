@@ -15,30 +15,24 @@ import it.unibs.ing.fp.library.Menu;
 
 public class HighestCard {
 	private final static String NOMEIT = "ITALIANE";
-	private final static String [] IT_VALUES = {"A","2","3","4","5","6","7","Knave","Knight","King"};
-    private final static String [] IT_SUITS = {"Swords", "Cups", "Coins", "Clubs"};
+	private final static String [] IT_VALUES = {"A","2","3","4","5","6","7","Fante","Cavallo","Re"};
+    private final static String [] IT_SUITS = {"Spade", "Coppe", "Denari", "Bastoni"};
     
     
     private final static String NOMEFR = "FRANCESI";
-    private final static String [] FR_VALUES = {"A","2","3","4","5","6","7","8","9","10","Jack","Queen","King"};
-    private final static String [] FR_SUITS = {"Hearts", "Diamonds", "Clubs", "Spades"};
+    private final static String [] FR_VALUES = {"A","2","3","4","5","6","7","8","9","10","Jack","Donna","Re"};
+    private final static String [] FR_SUITS = {"Cuori", "Quadri", "Fiori", "Picche"};
 	
 	private final static String INTRO = "BENVENUTO AL GIOCO DELLA CARTA PIU' ALTA";
 	
 	private final static String INTESTA_TIPI = "SELEZIONE DEL TIPO DI CARTE DA USARE";
 	private final static String MSG_START = "INIZIO PARTITA";
 	
-	private final static String MSG_NOME = "Inserisci il tuo nome:";
+	private final static String MSG_NOME = "Inserisci il tuo nome: ";
 	private final static String MSG_BALANCE = ", con quanti euro vuoi giocare? ";
 	private final static double MIN_BALANCE = 0.01;
 	
-	public final static String [] NOMI_ESISTENTI = {NOMEIT, NOMEFR};
-	
-	
-	
-	// private final static String FIRST_CHOISE = "Quale tipo di carte preferisci: Italiane [I] o Francesi [F] ?";
-	// private final static String VALID_CHAR = "IF";
-
+	private final static String [] NOMI_ESISTENTI = {NOMEIT, NOMEFR};
 	private final static String CHOISE_ERR = "Attenzione: inserimento errato";
 	
 	private static void play(Deck type) {

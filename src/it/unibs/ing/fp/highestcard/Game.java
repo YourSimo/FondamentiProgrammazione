@@ -20,10 +20,10 @@ public class Game {
 	private final static String MSG_CARD_USER = "Hai pescato: ";
 	private final static String MSG_CARD_PC = "Il computer ha pescato: ";
 
-	private final static String MSG_BET = "Quanti euro vuoi scommettere ? ";
+	private final static String MSG_BET = "Quanti euro vuoi scommettere? ";
 		
-	private final static String MSG_WIN = " hai vinto !";
-	private final static String MSG_LOSE = " hai perso !";
+	private final static String MSG_WIN = " hai vinto!";
+	private final static String MSG_LOSE = " hai perso!";
 	private final static String MSG_PAR = "Carte pari: procediamo ad un'altra estrazione dallo stesso mazzo";
 	
 	private Player player;
@@ -35,7 +35,6 @@ public class Game {
 	}
 	
 	private void oneGame() {
-		// Deck deck = new Deck(type);
 		boolean finish = false;
 		do {
 			Card utente = deck.getRandomCard();
@@ -47,12 +46,12 @@ public class Game {
 				
 			if (confronto > 0) {
 				player.setBalance(player.getBalance() + scommessa);
-				System.out.println(player + MSG_WIN);
+				System.out.println(player.getNickname() + MSG_WIN);
 				finish = true;
 			}
 			else if (confronto < 0) {
 				player.setBalance(player.getBalance() - scommessa);
-				System.out.println(player + MSG_LOSE);
+				System.out.println(player.getNickname() + MSG_LOSE);
 				finish = true;
 			}
 			else System.out.println(MSG_PAR);
