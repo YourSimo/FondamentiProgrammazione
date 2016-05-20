@@ -6,6 +6,8 @@ import it.unibs.ing.fp.library.InputData;
  * <h1> Class Game </h1>
  * <p>
  * 
+ * @author Federico Avino 
+ * @author Matteo Bellicini
  * @author Simone Cavicchioli
  * @author 
  * @version v1.1

@@ -4,6 +4,8 @@ package it.unibs.ing.fp.highestcard;
  * <h1> Class Card </h1>
  * <p>
  * 
+ * @author Federico Avino 
+ * @author Matteo Bellicini
  * @author Simone Cavicchioli
  * @version v2.0
  * @since 2016-05-03

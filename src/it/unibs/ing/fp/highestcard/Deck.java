@@ -9,6 +9,8 @@ import it.unibs.ing.fp.math.Casuale;
  * <h1> Class Deck </h1>
  * <p>
  * 
+ * @author Federico Avino 
+ * @author Matteo Bellicini
  * @author Simone Cavicchioli
  * @version v2.0
  * @since 2016-05-03

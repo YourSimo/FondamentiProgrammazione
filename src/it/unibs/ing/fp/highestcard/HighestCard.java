@@ -8,6 +8,8 @@ import it.unibs.ing.fp.library.Menu;
  * <h1> Class HighestCardMain </h1>
  * <p>
  * 
+ * @author Federico Avino 
+ * @author Matteo Bellicini
  * @author Simone Cavicchioli
  * @version v1.1
  * @since 2016-05-03
