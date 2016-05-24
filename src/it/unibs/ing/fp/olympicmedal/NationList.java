@@ -2,36 +2,86 @@ package it.unibs.ing.fp.olympicmedal;
 
 import java.util.Vector;
 
+import it.unibs.ing.fp.library.Formatting;
+import it.unibs.ing.fp.library.Menu;
+
+/**
+ * <h1> Class NationList </h1>
+ * <p>
+ * 
+ * @author Federico Avino 
+ * @author Matteo Bellicini
+ * @author Simone Cavicchioli 
+ * @version v1.0
+ * @since 2016-05-10
+ */
+
 public class NationList {
 	private static final String NATION_FORMAT = "%s, ";
-	private Vector <String> nations;
+	private Vector <Nation> nations;
 	
+	/**
+	 * Constructor.
+	 */
 	public NationList() {
-		nations = new Vector<String>();
-	}
-	
-	public void addNewNation(String state) {
-		nations.add(state);
+		nations = new Vector<Nation>();
 	}
 	
 	/**
-	 * 
-	 * @param search
-	 * @return 
+	 * Add new nation.
+	 * @param newState - The nation to add
+	 */
+	public void addNewNation(Nation newState) {
+		nations.add(newState);
+	}
+	
+	/**
+	 * Returns a Array of Nation names.
+	 * @return array of nations names strings
+	 */
+	public String [] getName() {
+		String [] result = new String[nations.size()];
+		for (int i = 0; i < result.length; i++) {
+		 	result[i] = nations.get(i).getName();
+		}
+		return result;
+	}
+	
+	/**
+	 * Returns true if the nation sought exists.
+	 * @param search - The nation to search
+	 * @return <tt> true </tt> if find a match; <tt>false </tt> otherwise
 	 */
 	public boolean matchNation(String search) {
-		for(String state : nations) {
-			if(state.equalsIgnoreCase(search)) return true;
+		for(Nation state : nations) {
+			if(search.equalsIgnoreCase(state.getName())) return true;
 		}
 		return false;
 	}
 	
-	@Override
-	public String toString() {
-		StringBuffer result = new StringBuffer();
-		for(String state : nations) {
-			result.append(String.format(NATION_FORMAT, state));
+	public boolean isEmpty() {
+		if(nations.size() == 0) return true;
+		return false;
+	}
+	
+	public Nation choiceNation(String question) {
+		String [] choices = getName();
+		Menu choiceList = new Menu (question, choices);
+		int choise = choiceList.choise();
+		if (choise == 0) return null;
+		else return nations.get(choise - 1);
+	}
+	
+	public void visualizzaMedagliere() {
+		if (/* SE NON CI SONO NAZIONI IN ELENCO */) {
+			// DARE UN MESSAGGIO DI ERRORE E USCIRE IMMEDIATAMENTE
 		}
-		return result.toString();
+		System.out.println(Formatting.framing(MSG_MEDAGLIERE));
+		System.out.println(Medals.heading());
+		// DOPO L'INTESTAZIONE STAMPARE I DATI DELLE NAZIONI UNA PER UNA
+	}
+
+	public void visualizzaMedagliereOrdinato() {
+		 // DA COMPLETARE
 	}
 }

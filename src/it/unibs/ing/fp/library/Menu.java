@@ -2,7 +2,7 @@ package it.unibs.ing.fp.library;
 
 public class Menu {
 	final private static String CORNICE = "--------------------------------";
-	final private static String ONTRO = "0\tEsci";
+	final private static String OUTRO = "0\tEsci";
 	final private static String RICHIESTA_INSERIMENTO = "Digita il numero dell'opzione desiderata > ";
 
 	private String title;
@@ -27,7 +27,7 @@ public class Menu {
 	    	System.out.println((i + 1) + "\t" + voci[i]);
 		}
 	    System.out.println();
-		System.out.println(ONTRO);
+		System.out.println(OUTRO);
 	    System.out.println();
   	}
 }
