@@ -15,7 +15,7 @@ import it.unibs.ing.fp.library.Menu;
  * @since 2016-05-03
  */
 
-public class HighestCard {
+public class HighestCardMain {
 	private final static String NOMEIT = "ITALIANE";
 	private final static String [] IT_VALUES = {"A","2","3","4","5","6","7","Fante","Cavallo","Re"};
     private final static String [] IT_SUITS = {"Spade", "Coppe", "Denari", "Bastoni"};
