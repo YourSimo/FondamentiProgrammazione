@@ -5,27 +5,24 @@ public class Formatting {
 	private final static String FRAME = "---------------------------------------------------";
 	private final static String HEAD = "\n";
 
-	public static String framing(String s) { 
-		 // RESTUTUISCE LA String OPPORTUNAMENTE INCORNICIATA
+	public static String framing(String s) {
 		StringBuffer result = new StringBuffer();
 		result.append(FRAME + HEAD + s + HEAD + FRAME);
 		return result.toString();
 	}
 
-	public static String inColumn (String s, int width) {
-		 // RESTITUISCE UNA String DI DIMENSIONE larghezza AGGIUNGENDO SPAZI AD s
+	public static String inColumn(String s, int width) {
 		StringBuffer result = new StringBuffer();
 		result.append(s);
-		for(int i = 0; i <= width; i++) result.append(SPACE);
+		int remainingSpace = width - s.length();
+		for(int i = 0; i <= remainingSpace; i++) result.append(SPACE);
 		return result.toString();
 	}
 		
-	public static String centered (String s, int width) {
-		 /* RESTITUISCE UNA String DI DIMENSIONE larghezza  
-		  *AGGIUNGENDO SPAZI PRIMA E DOPO s IN MODO CHE s RISULTI IN POSIZIONE CENTRATA
-		  */	
+	public static String centered(String s, int width) {	
 		StringBuffer result = new StringBuffer();
-		int halfWidth = width / 2;
+		int remainingSpace = width - s.length();
+		int halfWidth = remainingSpace / 2;
 		for(int i = 0; i <= halfWidth; i++) result.append(SPACE);
 		result.append(s);
 		for(int i = 0; i <= halfWidth; i++) result.append(SPACE);

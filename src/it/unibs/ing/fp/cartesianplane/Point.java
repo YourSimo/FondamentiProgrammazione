@@ -10,7 +10,6 @@ package it.unibs.ing.fp.cartesianplane;
  */
 
 public class Point {
-	
 	private double x = 0.0;
 	private double y = 0.0;
 	

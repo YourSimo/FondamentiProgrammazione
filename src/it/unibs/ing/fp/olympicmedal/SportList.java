@@ -16,7 +16,7 @@ import it.unibs.ing.fp.library.Menu;
  */
 
 public class SportList {
-	private static final String SPORT_FORMAT = "%s, ";
+	//	private static final String SPORT_FORMAT = "%s, ";
 	private Vector <Sport> sports;
 	
 	/**
@@ -68,15 +68,15 @@ public class SportList {
 	}
 	
 	/**
-	 * 
-	 * @param question
-	 * @return
+	 * Returns a user chooses Sport or nothing.
+	 * @param message - ...
+	 * @return Sport if user choose a number different from 0; nothing otherwise
 	 */
-	public Sport choiceSport(String question) {
-		String [] choices = getName();
-		Menu choiceList = new Menu (question, choices);
-		int choise = choiceList.choise();
-		if (choise == 0) return null;
-		else return sports.get(choise - 1);
+	public Sport choiceSport(String message) {
+		String [] listSportsNames = getName();
+		Menu choicesList = new Menu(message, listSportsNames);
+		int choiseUser = choicesList.choise();
+		if (choiseUser == 0) return null;
+		else return sports.get(choiseUser - 1);
 	}
 }

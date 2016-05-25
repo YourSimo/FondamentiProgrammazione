@@ -1,6 +1,9 @@
 package it.unibs.ing.fp.olympicmedal;
 
-public class Nation {
+import it.unibs.ing.fp.library.Formatting;
+import it.unibs.ing.fp.library.Sortable;
+
+public class Nation implements Sortable{
 	private String name;
 	private int [] numMedal;
 	
@@ -23,17 +26,39 @@ public class Nation {
 	}
 	
 	/**
-	 * Add medals
-	 * @param qtà - The number of medal
+	 * Add medal.
+	 * @param medal - The position of podium
 	 */
-	public void addMedal(int qtà) {
-		numMedal[qtà]++;
+	public void addMedal(int medal) {
+		numMedal[medal]++;
+	}
+	
+	public boolean lessThan(Object otherNation) {
+		if(otherNation == null || !(otherNation instanceof Nation)) return false;
+		else {
+			int indexNumMedalThisNation = 0, indexNumMedalOtherNation = 0;
+			for(int i = 0; i < Medals.NAME_MEDALS.length; i++) {
+				indexNumMedalThisNation += numMedal[i] * (3 - i);
+			}
+			for(int i = 0; i < Medals.NAME_MEDALS.length; i++) {
+				indexNumMedalOtherNation += numMedal[i] * (3 - i);
+			}
+			
+			return indexNumMedalThisNation < indexNumMedalOtherNation;
+		}
+		
+	}
+	
+	public boolean greaterThan(Object otherNation) {
+		return ! lessThan(otherNation);
 	}
 	
 	@Override
 	public String toString() {
 		StringBuffer result = new StringBuffer();
-		
+		result.append(Formatting.inColumn(name, Medals.WIDTH_FIRST_COLUMN));
+		for (int i = 0; i < Medals.NAME_MEDALS.length; i++)
+			result.append(Formatting.centered(String.valueOf(numMedal[i]), Medals.WIDTH_MEDAL_COLUMN));
 		return result.toString();
 	}
 }

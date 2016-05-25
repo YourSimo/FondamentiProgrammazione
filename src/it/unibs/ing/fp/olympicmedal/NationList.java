@@ -1,9 +1,9 @@
 package it.unibs.ing.fp.olympicmedal;
 
 import java.util.Vector;
-
 import it.unibs.ing.fp.library.Formatting;
 import it.unibs.ing.fp.library.Menu;
+import it.unibs.ing.fp.library.Sort;
 
 /**
  * <h1> Class NationList </h1>
@@ -17,7 +17,11 @@ import it.unibs.ing.fp.library.Menu;
  */
 
 public class NationList {
-	private static final String NATION_FORMAT = "%s, ";
+	//	private static final String NATION_FORMAT = "%s, ";
+	private static final String MSG_NO_NATION = "Attenzione non e' presente nessuna nazione";
+	private static final String MSG_RANKING = "ECCO IL MEDAGLIERE OLIMPICO";
+	private static final String MSG_RANKING_SORTED = "ECCO IL MEDAGLIERE OLIMPICO ORDINATO";
+	
 	private Vector <Nation> nations;
 	
 	/**
@@ -39,9 +43,10 @@ public class NationList {
 	 * Returns a Array of Nation names.
 	 * @return array of nations names strings
 	 */
+	// getNationsNames
 	public String [] getName() {
 		String [] result = new String[nations.size()];
-		for (int i = 0; i < result.length; i++) {
+		for(int i = 0; i < result.length; i++) {
 		 	result[i] = nations.get(i).getName();
 		}
 		return result;
@@ -59,29 +64,57 @@ public class NationList {
 		return false;
 	}
 	
+	/**
+	 * Returns true if there are no nations on the list.
+	 * @return <tt> true </tt> if there are no nations on the list; <tt>false </tt> otherwise
+	 */
 	public boolean isEmpty() {
 		if(nations.size() == 0) return true;
 		return false;
 	}
 	
+	/**
+	 * Returns a user chooses Nation or nothing.
+	 * @param message - ...
+	 * @return Nation if user choose a number different from 0; nothing otherwise
+	 */
 	public Nation choiceNation(String question) {
-		String [] choices = getName();
-		Menu choiceList = new Menu (question, choices);
-		int choise = choiceList.choise();
-		if (choise == 0) return null;
-		else return nations.get(choise - 1);
+		String [] listNationNames = getName();
+		Menu choiceList = new Menu (question, listNationNames);
+		int choiseUser = choiceList.choise();
+		if(choiseUser == 0) return null;
+		else return nations.get(choiseUser - 1);
 	}
 	
 	public void visualizzaMedagliere() {
-		if (/* SE NON CI SONO NAZIONI IN ELENCO */) {
-			// DARE UN MESSAGGIO DI ERRORE E USCIRE IMMEDIATAMENTE
+		if (isEmpty()) {
+			System.out.println(MSG_NO_NATION);
+			return;
 		}
-		System.out.println(Formatting.framing(MSG_MEDAGLIERE));
+		System.out.println(Formatting.framing(MSG_RANKING));
 		System.out.println(Medals.heading());
-		// DOPO L'INTESTAZIONE STAMPARE I DATI DELLE NAZIONI UNA PER UNA
+		for(int i = 0; i < nations.size(); i++) {
+			System.out.println(nations.get(i).toString());
+		}
 	}
 
 	public void visualizzaMedagliereOrdinato() {
-		 // DA COMPLETARE
+		if (isEmpty()) {
+			System.out.println(MSG_NO_NATION);
+			return;
+		}
+		
+		Nation [] ranking = new Nation[nations.size()];
+		for(int i = 0; i < nations.size(); i++) {
+			ranking[i] = nations.get(i);
+		}
+		Sort o = new Sort(ranking);
+	    Nation[] classifica = (Nation[]) o.selectionSortA_Z();
+	    
+		System.out.println(Formatting.framing(MSG_RANKING_SORTED));
+		System.out.println(Medals.heading());
+		for(int i = 0; i < classifica.length; i++) {
+			System.out.println(classifica[i].toString());
+		}
 	}
 }
