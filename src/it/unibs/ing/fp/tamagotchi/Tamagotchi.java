@@ -1,7 +1,7 @@
 package it.unibs.ing.fp.tamagotchi;
 
 /**
- * <h1>Class Tamagotchi</h1>
+ * <h1> Class Tamagotchi </h1>
  * <p>
  * 
  * @author Simone Cavicchioli
@@ -20,7 +20,7 @@ public class Tamagotchi {
 	private final static int MIN_AFF = 30;
 	private final static int MAX_AFF = 90;
 	
-	private final static String DESCRIPTION	= "Sono %s%nIl mio grado di sazietà Ë %1.2f%nIl mio grado di soddisfazione affettiva Ë %1.2f";
+	private final static String DESCRIPTION	= "Sono %s\nIl mio grado di sazietà è %1.2f\nIl mio grado di soddisfazione affettiva è %1.2f";
 	private final static String MSG_DIED = "\nAttenzione sono violate le condizioni per la mia sopravvivenza! Addio!";
 	private final static String MSG_UNHAPPY = "\nAttenzione sono infelice!";
 	

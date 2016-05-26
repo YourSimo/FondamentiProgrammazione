@@ -16,35 +16,43 @@ import it.unibs.ing.fp.tamagotchi.Tamagotchi;
  */
 
 public class TamaZoo {
-	private final static String MSG_NOME = "Inserisci un nickname: ";
-	private static final String MSG_TAMAZOO = "--[TamaZoo]--%n";
+	private static final String MSG_TAMAZOO = "--[TamaZoo]--\n";
 	
 	private Vector <Tamagotchi> tamaZoo;
 	
 	public TamaZoo(int qtà) {
 		tamaZoo = new Vector <Tamagotchi>();
 		for (int i = 0; i < qtà; i++) {
-			tamaZoo.add(makeTamagotchi());
+			tamaZoo.add(TamaZooMain.makeTamagotchi());
 		}
 	}
 	
-	public void diedTamagotchi(Tamagotchi ta) {
-		tamaZoo.remove(ta);
+	public void giveCarezze(int carezze) {
+		for(Tamagotchi ta : tamaZoo) ta.giveCarezze(carezze);
 	}
 	
-	public static Tamagotchi makeTamagotchi() {
-		String nome = InputData.readStringNotEmpty(MSG_NOME);
-		int affettività = Casuale.randomInt(Tamagotchi.MIN_SAZ, Tamagotchi.MAX_SAZ);
-		int sazietà = Casuale.randomInt(Tamagotchi.MIN_SAZ, Tamagotchi.MAX_SAZ);
-		
-		return new Tamagotchi(nome, affettività, sazietà);
+	public void giveBiscotti(int biscotti) {
+		for(Tamagotchi ta : tamaZoo) ta.giveBiscotti(biscotti);
+	}
+	
+	
+	public boolean allDead() {
+		boolean noSurvivors = true;
+		for(int i = 0; i < tamaZoo.size(); i++) {
+			if(tamaZoo.get(i).isDied()) {
+				tamaZoo.remove(i); 
+				i--;
+			}
+		}
+		for(Tamagotchi ta : tamaZoo) if(!ta.isDied()) noSurvivors = false;
+		return noSurvivors;
 	}
 	
 	public String toString() {
 		StringBuffer result = new StringBuffer();
 		result.append(MSG_TAMAZOO);
 		for(int i = 0; i < tamaZoo.size(); i++) {
-			result.append(tamaZoo.get(i).toString() + "%n");
+			result.append(tamaZoo.get(i).toString() + "\n");
 		}
 		return result.toString();
 	}

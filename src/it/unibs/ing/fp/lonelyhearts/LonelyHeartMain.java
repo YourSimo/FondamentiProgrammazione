@@ -16,14 +16,14 @@ public class LonelyHeartMain {
 	private final static String MSG_INTRO_INSERIMENTO = "Inserimento dati di un nuovo cuore solitario";
 	private final static String MSG_PSEUDONIMO = "Inserisci il tuo pseudonimo:";
 	private final static String MSG_ETA = "Inserisci la tua eta':";
-	private final static String MSG_SESSO= "Inserisci F se sei femmina o M se sei maschio";
+	private final static String MSG_SESSO = "Inserisci F se sei femmina o M se sei maschio";
 	private final static String MSG_SEGNO = "Inserisci il tuo segno zodiacale:";
 	private final static String MSG_SEGNO_PREFERITO = "Inserisci il segno zodiacale che vuoi incontrare:";
 	
 	private final static String MSG_AFFINE= "%s E' potenzialmente affine a %s";
 	private final static String MSG_NON_AFFINE= "%s NON E' potenzialmente affine a %s";
 	
-	private final static String RISPOSTE_AMMISSIBILI ="MF";
+	private final static String RISPOSTE_AMMISSIBILI = "MF";
 	
 	private final static int MIN_AGE = 18;
 	private final static int MAX_AGE = 120;
