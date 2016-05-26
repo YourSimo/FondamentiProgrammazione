@@ -16,15 +16,23 @@ import it.unibs.ing.fp.tamagotchi.Tamagotchi;
  */
 
 public class TamaZoo {
-	private static final String MSG_TAMAZOO = "--[TamaZoo]--\n";
+	private static final String MSG_TAMAZOO = "----------[TamaZoo]----------";
 	
 	private Vector <Tamagotchi> tamaZoo;
+	
+	public TamaZoo() {
+		tamaZoo = new Vector <Tamagotchi>();
+	}
 	
 	public TamaZoo(int qtà) {
 		tamaZoo = new Vector <Tamagotchi>();
 		for (int i = 0; i < qtà; i++) {
 			tamaZoo.add(TamaZooMain.makeTamagotchi());
 		}
+	}
+	
+	public void addTamagotchi(Tamagotchi ta) {
+		tamaZoo.add(ta);
 	}
 	
 	public void giveCarezze(int carezze) {
@@ -35,22 +43,24 @@ public class TamaZoo {
 		for(Tamagotchi ta : tamaZoo) ta.giveBiscotti(biscotti);
 	}
 	
-	
-	public boolean allDead() {
-		boolean noSurvivors = true;
+	public void removeTamagotchiDied() {
 		for(int i = 0; i < tamaZoo.size(); i++) {
 			if(tamaZoo.get(i).isDied()) {
 				tamaZoo.remove(i); 
 				i--;
 			}
 		}
-		for(Tamagotchi ta : tamaZoo) if(!ta.isDied()) noSurvivors = false;
-		return noSurvivors;
 	}
 	
+	public boolean allDead() {
+		if(tamaZoo.size() == 0) return true;
+		return false;
+	}
+	
+	@Override
 	public String toString() {
 		StringBuffer result = new StringBuffer();
-		result.append(MSG_TAMAZOO);
+		result.append(MSG_TAMAZOO + "\n");
 		for(int i = 0; i < tamaZoo.size(); i++) {
 			result.append(tamaZoo.get(i).toString() + "\n");
 		}
