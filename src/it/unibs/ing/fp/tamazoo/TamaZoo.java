@@ -1,9 +1,6 @@
 package it.unibs.ing.fp.tamazoo;
 
 import java.util.Vector;
-
-import it.unibs.ing.fp.library.InputData;
-import it.unibs.ing.fp.math.Casuale;
 import it.unibs.ing.fp.tamagotchi.Tamagotchi;
 
 /**
@@ -11,7 +8,7 @@ import it.unibs.ing.fp.tamagotchi.Tamagotchi;
  * <p>
  * 
  * @author Simone Cavicchioli
- * @version v1.0
+ * @version v1.1
  * @since 2016-05-17
  */
 
