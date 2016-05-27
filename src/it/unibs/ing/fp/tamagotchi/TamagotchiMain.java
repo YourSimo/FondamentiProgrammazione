@@ -5,7 +5,7 @@ import it.unibs.ing.fp.math.Casuale;
 import it.unibs.ing.fp.hello.Hello;
 
 /**
- * <h1>Class TamagotchiMain</h1>
+ * <h1> Class TamagotchiMain </h1>
  * <p>
  * 
  * @author Simone Cavicchioli
@@ -34,7 +34,7 @@ public class TamagotchiMain {
 		int affettività = InputData.readIntWithLimit(MSG_AFF, Tamagotchi.MIN_SAZ, Tamagotchi.MAX_SAZ);
 		int sazietà = InputData.readIntWithLimit(MSG_SAZ, Tamagotchi.MIN_SAZ, Tamagotchi.MAX_SAZ);
 		
-		return new Tamagotchi(nome, affettività, sazietà);
+		return new Tamagotchi(nome, "TamaBase", affettività, sazietà);
 	}
 	
 	// Metodo static whatDoYouWantToDo

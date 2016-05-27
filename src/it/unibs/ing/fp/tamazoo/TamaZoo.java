@@ -17,16 +17,22 @@ public class TamaZoo {
 	
 	private Vector <Tamagotchi> tamaZoo;
 	
+	/**
+	 * Constructor.
+	 */
 	public TamaZoo() {
 		tamaZoo = new Vector <Tamagotchi>();
 	}
 	
-	public TamaZoo(int qtà) {
-		tamaZoo = new Vector <Tamagotchi>();
-		for (int i = 0; i < qtà; i++) {
-			tamaZoo.add(TamaZooMain.makeTamagotchi());
-		}
-	}
+	/*
+	 * 	public TamaZoo(int qtà) {
+	 * 		tamaZoo = new Vector <Tamagotchi>();
+	 *		for (int i = 0; i < qtà; i++) {
+	 *			tamaZoo.add(TamaZooMain.makeTamagotchi());
+	 *	 	}
+	 *	}
+	 */
+		
 	
 	public void addTamagotchi(Tamagotchi ta) {
 		tamaZoo.add(ta);
