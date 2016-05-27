@@ -103,11 +103,14 @@ public class NationList {
 			System.out.println(MSG_NO_NATION);
 			return;
 		}
-		
+		Nation [] ranking = new Nation[nations.size()];
+		ranking = (Nation[]) nations.toArray();
+		/*
 		Nation [] ranking = new Nation[nations.size()];
 		for(int i = 0; i < nations.size(); i++) {
 			ranking[i] = nations.get(i);
 		}
+		*/
 		Sort o = new Sort(ranking);
 	    Nation[] classifica = (Nation[]) o.selectionSortA_Z();
 	    
