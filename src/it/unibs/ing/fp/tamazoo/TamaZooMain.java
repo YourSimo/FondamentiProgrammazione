@@ -17,7 +17,7 @@ import it.unibs.ing.fp.tamagotchi.Tamagotchi;
 
 public class TamaZooMain {
 	private static final String MSG_NEW_NAME = "Inserisci un nickname: ";
-	private static final String [] TAMA_TYPES = {"TamaBase", "TamaTriste", "TamaGordo"};
+	private static final String [] TAMA_TYPES = {"TamaBase", "TamaTriste"/*, "TamaGordo"*/};
 	
 	private static final String MSG_NEW_TAMAZOO = "Inserire il numero di Tamagotchi da creare: ";
 	
@@ -46,12 +46,13 @@ public class TamaZooMain {
 		
 		Tamagotchi newTama = null;
 		
-		//	int type = Casuale.randomInt(0, TAMA_TYPES.length);
-		switch(0) {
+		int type = Casuale.randomInt(0, TAMA_TYPES.length - 1);
+		switch(type) {
 			case 0: 
 				newTama = new Tamagotchi(nome, TAMA_TYPES[0], affettività, sazietà);
+				break;
 			case 1:
-				//	newTama = new TamaTriste(nome, TAMA_TYPES[1], affettività, sazietà);
+				newTama = new TamaTriste(nome, TAMA_TYPES[1], sazietà);
 				break;
 			case 2:
 				//	newTama = new TamaGordo(nome, TAMA_TYPES[2], affettività, sazietà);

@@ -63,9 +63,9 @@ public class TamaZoo {
 	@Override
 	public String toString() {
 		StringBuffer result = new StringBuffer();
-		result.append(MSG_TAMAZOO + "\n");
+		result.append("\n" + MSG_TAMAZOO + "\n\n");
 		for(int i = 0; i < tamaZoo.size(); i++) {
-			result.append(tamaZoo.get(i).toString() + "\n");
+			result.append(tamaZoo.get(i).toString() + "\n\n");
 		}
 		return result.toString();
 	}
