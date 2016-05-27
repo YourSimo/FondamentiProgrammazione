@@ -10,6 +10,8 @@ import it.unibs.ing.fp.tamagotchi.Tamagotchi;
  * <h1> Class TamaZooMain </h1>
  * <p>
  * 
+ * @author Federico Avino 
+ * @author Matteo Bellicini
  * @author Simone Cavicchioli
  * @version v1.0
  * @since 2016-05-17
@@ -17,7 +19,7 @@ import it.unibs.ing.fp.tamagotchi.Tamagotchi;
 
 public class TamaZooMain {
 	private static final String MSG_NEW_NAME = "Inserisci un nickname: ";
-	private static final String [] TAMA_TYPES = {"TamaBase", "TamaTriste"/*, "TamaGordo"*/};
+	private static final String [] TAMA_TYPES = {"TamaBase", "TamaTriste", "TamaGordo"};
 	
 	private static final String MSG_NEW_TAMAZOO = "Inserire il numero di Tamagotchi da creare: ";
 	
@@ -55,7 +57,7 @@ public class TamaZooMain {
 				newTama = new TamaTriste(nome, TAMA_TYPES[1], sazietà);
 				break;
 			case 2:
-				//	newTama = new TamaGordo(nome, TAMA_TYPES[2], affettività, sazietà);
+				newTama = new TamaGordo(nome, TAMA_TYPES[2], sazietà);
 				break;
 		}
 		return newTama;
@@ -65,16 +67,7 @@ public class TamaZooMain {
 		int amount = InputData.readIntWithMin(MSG_NEW_TAMAZOO, 1);
 		for (int i = 0; i < amount; i++) myTamaZoo.addTamagotchi(makeTamagotchi());
 		return myTamaZoo;
-	}
-	
-	/*
-	 * private static TamaZoo makeTamaZooOld() {
-	 * 	  int amount = InputData.readIntWithMin(MSG_NEW_TAMAZOO, 1);
-	 *	  return new TamaZoo(amount);
-	 * }
-	 * 
-	 */
-		
+	}	
 	
 	private static void printTamaZoo(TamaZoo taZ) {
 		System.out.println(taZ.toString());
@@ -84,8 +77,6 @@ public class TamaZooMain {
 		// TODO Auto-generated method stub
 
 		Hello.sayHello(MSG_INTRO);
-		
-		//	TamaZoo myTamaZoo = makeTamaZoo();
 		
 		makeTamaZoo();
 		

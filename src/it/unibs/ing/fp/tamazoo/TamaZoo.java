@@ -7,6 +7,8 @@ import it.unibs.ing.fp.tamagotchi.Tamagotchi;
  * <h1> Class TamaZoo </h1>
  * <p>
  * 
+ * @author Federico Avino 
+ * @author Matteo Bellicini
  * @author Simone Cavicchioli
  * @version v1.1
  * @since 2016-05-17
@@ -24,26 +26,28 @@ public class TamaZoo {
 		tamaZoo = new Vector <Tamagotchi>();
 	}
 	
-	/*
-	 * 	public TamaZoo(int qtà) {
-	 * 		tamaZoo = new Vector <Tamagotchi>();
-	 *		for (int i = 0; i < qtà; i++) {
-	 *			tamaZoo.add(TamaZooMain.makeTamagotchi());
-	 *	 	}
-	 *	}
+	/**
+	 * Add a Tamagotchi in TamaZoo.
+	 * @param ta - The Tamagotchi to add
 	 */
-		
-	
 	public void addTamagotchi(Tamagotchi ta) {
 		tamaZoo.add(ta);
 	}
 	
-	public void giveCarezze(int carezze) {
-		for(Tamagotchi ta : tamaZoo) ta.giveCarezze(carezze);
+	/**
+	 * Give a number of carezze on each Tamagotchi.
+	 * @param numCarezze - The number of carezze to give to the Vector Tamagotchi
+	 */
+	public void giveCarezze(int numCarezze) {
+		for(Tamagotchi ta : tamaZoo) ta.giveCarezze(numCarezze);
 	}
 	
-	public void giveBiscotti(int biscotti) {
-		for(Tamagotchi ta : tamaZoo) ta.giveBiscotti(biscotti);
+	/**
+	 * Give a number of biscotti on each Tamagotchi.
+	 * @param numBiscotti - The number of biscotti to give to the Vector Tamagotchi
+	 */
+	public void giveBiscotti(int numBiscotti) {
+		for(Tamagotchi ta : tamaZoo) ta.giveBiscotti(numBiscotti);
 	}
 	
 	public void removeTamagotchiDied() {

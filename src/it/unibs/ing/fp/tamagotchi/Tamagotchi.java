@@ -4,6 +4,8 @@ package it.unibs.ing.fp.tamagotchi;
  * <h1> Class Tamagotchi </h1>
  * <p>
  * 
+ * @author Federico Avino 
+ * @author Matteo Bellicini
  * @author Simone Cavicchioli
  * @version v1.1
  * @since 2016-04-12
@@ -17,7 +19,7 @@ public class Tamagotchi {
 	
 	public static final int MIN_SAZ = 0;
 	public static final int MAX_SAZ = 100;
-	private static final int MIN_AFF = 30;
+	protected static final int MIN_AFF = 30;
 	private static final int MAX_AFF = 90;
 	
 	private static final String DESCRIPTION	= "Sono %s di tipo %s\nIl mio grado di soddisfazione affettiva è %1.2f\nIl mio grado di sazietà è %1.2f";
@@ -32,6 +34,7 @@ public class Tamagotchi {
 	/**
 	 * Constructor.
 	 * @param nome - The name of Object Tamagotchi
+	 * @param tipo - The type of Tamagotchi
 	 * @param affettività - The level of affettività
 	 * @param sazietà - The level of sazietà
 	 */
@@ -52,7 +55,7 @@ public class Tamagotchi {
 	}
 	
 	/**
-	 * Give a nuber of biscotti.
+	 * Give a number of biscotti.
 	 * @param numBiscotti - The number of biscotti to give to the Object Tamagotchi
 	 */
 	public void giveBiscotti(int numBiscotti) {
