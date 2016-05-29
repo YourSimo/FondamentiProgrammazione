@@ -1,7 +1,6 @@
 package it.unibs.ing.fp.olympicmedal;
 
 import java.util.Vector;
-
 import it.unibs.ing.fp.library.Menu;
 
 /**

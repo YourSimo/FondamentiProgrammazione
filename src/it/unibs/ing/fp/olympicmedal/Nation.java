@@ -1,7 +1,6 @@
 package it.unibs.ing.fp.olympicmedal;
 
 import it.unibs.ing.fp.library.Formatting;
-import it.unibs.ing.fp.library.Sortable;
 
 public class Nation /*implements Sortable*/{
 	private String name;

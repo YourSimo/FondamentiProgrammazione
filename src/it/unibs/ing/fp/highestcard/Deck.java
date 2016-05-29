@@ -2,7 +2,6 @@ package it.unibs.ing.fp.highestcard;
 
 import java.util.ArrayList;
 import java.util.Collections;
-
 import it.unibs.ing.fp.math.Casuale;
 
 /**

@@ -3,7 +3,6 @@ package it.unibs.ing.fp.olympicmedal;
 import java.util.Vector;
 import it.unibs.ing.fp.library.Formatting;
 import it.unibs.ing.fp.library.Menu;
-import it.unibs.ing.fp.library.Sort;
 
 /**
  * <h1> Class NationList </h1>

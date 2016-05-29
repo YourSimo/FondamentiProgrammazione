@@ -4,8 +4,8 @@ import java.util.Vector;
 
 public class Wallet {
 	private String name;
-	private Vector <Title> elencoTitoli;
-	private int numAzioniAcquisite;
+	private Vector <Title> elencoTitoliAcquisiti;
+	//	private int numAzioniAcquisite;
 	
 	
 }
