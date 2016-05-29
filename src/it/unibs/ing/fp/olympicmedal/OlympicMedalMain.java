@@ -5,7 +5,7 @@ import it.unibs.ing.fp.library.InputData;
 import it.unibs.ing.fp.library.Menu;
 
 /**
- * <h1> Class Main </h1>
+ * <h1> Class OlympicMedalMain </h1>
  * <p>
  * 
  * @author Federico Avino 
@@ -15,7 +15,7 @@ import it.unibs.ing.fp.library.Menu;
  * @since 2016-05-10
  */
 
-public class Main {
+public class OlympicMedalMain {
 	private static NationList participants = new NationList();
 	private static SportList sports = new SportList();
 	

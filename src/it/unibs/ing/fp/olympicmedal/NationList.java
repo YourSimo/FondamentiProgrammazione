@@ -103,21 +103,21 @@ public class NationList {
 			System.out.println(MSG_NO_NATION);
 			return;
 		}
-		Nation [] ranking = new Nation[nations.size()];
-		ranking = (Nation[]) nations.toArray();
-		/*
-		Nation [] ranking = new Nation[nations.size()];
-		for(int i = 0; i < nations.size(); i++) {
-			ranking[i] = nations.get(i);
+		Vector <Nation> matrice = nations;
+		for(int i = 2; i >= 0; i--) {
+			for(int j = 0; j < matrice.size() - 1; j++) {
+				if(matrice.get(j).lessThan(matrice.get(j + 1), i)) {
+					Nation tmp = matrice.get(j);
+					matrice.set(j, matrice.get(j + 1));
+					matrice.set(j + 1, tmp);
+				}
+			}
 		}
-		*/
-		Sort o = new Sort(ranking);
-	    Nation[] classifica = (Nation[]) o.selectionSortA_Z();
-	    
+		
 		System.out.println(Formatting.framing(MSG_RANKING_SORTED));
 		System.out.println(Medals.heading());
-		for(int i = 0; i < classifica.length; i++) {
-			System.out.println(classifica[i].toString());
+		for(int i = 0; i < matrice.size(); i++) {
+			System.out.println(matrice.get(i).toString());
 		}
 	}
 }

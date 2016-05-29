@@ -3,7 +3,7 @@ package it.unibs.ing.fp.olympicmedal;
 import it.unibs.ing.fp.library.Formatting;
 import it.unibs.ing.fp.library.Sortable;
 
-public class Nation implements Sortable{
+public class Nation /*implements Sortable*/{
 	private String name;
 	private int [] numMedal;
 	
@@ -33,26 +33,11 @@ public class Nation implements Sortable{
 		numMedal[medal]++;
 	}
 	
-	public boolean lessThan(Object otherNation) {
-		if(otherNation == null || !(otherNation instanceof Nation)) return false;
-		else {
-			int indexNumMedalThisNation = 0, indexNumMedalOtherNation = 0;
-			for(int i = 0; i < Medals.NAME_MEDALS.length; i++) {
-				indexNumMedalThisNation += numMedal[i] * (3 - i);
-			}
-			for(int i = 0; i < Medals.NAME_MEDALS.length; i++) {
-				indexNumMedalOtherNation += numMedal[i] * (3 - i);
-			}
-			
-			return indexNumMedalThisNation < indexNumMedalOtherNation;
-		}
-		
+	public boolean lessThan(Nation otherNation, int podio) {
+		if(numMedal[podio] < otherNation.numMedal[podio]) return true;
+		else return false;
 	}
-	
-	public boolean greaterThan(Object otherNation) {
-		return ! lessThan(otherNation);
-	}
-	
+
 	@Override
 	public String toString() {
 		StringBuffer result = new StringBuffer();
