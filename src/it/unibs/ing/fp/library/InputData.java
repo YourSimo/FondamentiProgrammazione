@@ -1,50 +1,64 @@
 package it.unibs.ing.fp.library;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
- * <h1>Class InputData</h1>
+ * <h1> Class InputData </h1>
  * <p>
  * 
  * @author Simone Cavicchioli
- * @version v5.0
+ * @version v6.0
  * @since 2016-03-15
  */
 
 public class InputData {
 	private static Scanner reader = makeScanner();
 	
-	private final static String ERRORE_MINIMO = "Attenzione: e' richiesto un valore maggiore o uguale a ";
-	private final static String ERRORE_MASSIMO = "Attenzione: e' richiesto un valore minore o uguale a ";
-	private final static String ERRORE_LIMITI = "Attenzione i valori ammessi sono nell'intervallo: ";
-	private final static String ERRORE_CHAR_CONSENTITI = "Attenzione sono consentiti solo i caratteri ";
-	private final static String ERRORE_FORMATO = "Attenzione: il dato inserito non è nel formato corretto";
-	private final static String ERRORE_STRINGA_VUOTA = "Attenzione: non hai inserito alcun carattere";
+	private final static String ERROR_MIN = "Attenzione: e' richiesto un valore maggiore o uguale a ";
+	private final static String ERROR_MAX = "Attenzione: e' richiesto un valore minore o uguale a ";
+	private final static String ERROR_LIMIT = "Attenzione i valori ammessi sono nell'intervallo: ";
+	private final static String ERROR_CHAR_ALLOWED = "Attenzione sono consentiti solo i caratteri ";
+	private final static String ERROR_FORMAT = "Attenzione: il dato inserito non è nel formato corretto";
+	private final static String ERROR_EMPTY_STRING = "Attenzione: non hai inserito alcun carattere";
 
 	private static final char YES_ANSWER = 'S';
 	private static final char NO_ANSWER = 'N';
 	
 	
-	// Metodo Scanner
 	private static Scanner makeScanner() {
 		Scanner reader = new Scanner(System.in);
 		reader.useDelimiter(System.getProperty("line.separator"));
 		return reader;
 	}
 	
-	// Metodo ReadInt
+	/**
+	 * Return the int read from Console.
+	 * @param message - The information on the int to be read
+	 * @return the int read
+	 */
 	public static int readInt(String message) {
 		boolean finish = false;
 		int readValue = 0;
 		do {
 			System.out.print(message);
+			try {
+				readValue = reader.nextInt();
+				finish = true;
+		    }
+		    catch (InputMismatchException e) {
+		       System.out.println(ERROR_FORMAT);
+		       String trashing = reader.next();
+		    }
+			/*
 			if (reader.hasNextInt()) {
 				readValue = reader.nextInt();
 				finish = true;
 			} else {
-				System.out.println(ERRORE_FORMATO);
+				System.out.println(ERROR_FORMAT);
 				String trashing = reader.next();
 			}
+			*/
 		} while (!finish);
 		return readValue;
 	}
@@ -55,11 +69,18 @@ public class InputData {
 	   int readValue = 0;
 	   do {
 		   readValue = readInt(message);
-		   if (readValue >= min)
-			   finish = true;
-		   else System.out.println(ERRORE_MINIMO + min);
+		   if (readValue >= min) finish = true;
+		   else System.out.println(ERROR_MIN + min);
 	   } while (!finish);  
 	   	return readValue;
+	}
+	
+	public static int readIntPositive(String message) {
+		return readIntWithMin(message, 1);
+	}
+	
+	public static int readIntNotNegative(String message) {
+		return readIntWithMin(message, 0);
 	}
 	
 	// Metodo ReadIntWithLimit
@@ -67,31 +88,47 @@ public class InputData {
 		boolean finish = false;
 		int readValue = 0;
 		do {
+			readValue = readInt(message);
+		    if (readValue >= min && readValue<= max) finish = true;
+		    else if (readValue < min) System.out.println(ERROR_MIN + min);
+		    else System.out.println(ERROR_MAX + max); 
+			/*
 			System.out.print(message);
 			if (reader.hasNextInt()) {
 				readValue = reader.nextInt();
 				if (readValue >= min && readValue <= max) finish = true;
 			} else {
-				System.out.println(ERRORE_LIMITI + min + "-" + max);
+				System.out.println(ERROR_LIMIT + min + "-" + max);
 				String trashing = reader.next();
 			}
+			*/
 		} while (!finish);
 		return readValue;
 	}
 	
 	// Metodo ReadDouble
 	public static double readDouble(String message) {
-		System.out.println(message);
 		boolean finish = false;
-		double readValue = 0.0;
+		double readValue = 0;
 		do {
+			System.out.println(message);
+			try {
+				readValue = reader.nextDouble();
+				finish = true;
+		    }
+		    catch (InputMismatchException e) {
+		    	System.out.println(ERROR_FORMAT);
+		    	String trashing = reader.next();
+		    }
+			/*
 			if (reader.hasNextDouble()){
 				readValue = reader.nextDouble();
 				finish = true;
 			} else {
-				System.out.println(ERRORE_FORMATO);
+				System.out.println(ERROR_FORMAT);
 				reader.next();
 			}
+			*/
 		} while(!finish);
 		return readValue;	
 	}
@@ -104,9 +141,17 @@ public class InputData {
 			readValue = readDouble(message);
 			if (readValue >= min)
 				finish = true;
-			else System.out.println(ERRORE_MINIMO + min);
+			else System.out.println(ERROR_MIN + min);
 		} while (!finish);
 		return readValue;
+	}
+	
+	public static double readDoublePositive(String message) {
+		return readDoubleWithMin(message, 1);
+	}
+	
+	public static double readDoubleNotNegative(String message) {
+		return readDoubleWithMin(message, 0);
 	}
 	
 	// Metodo ReadDoubleWithLimit
@@ -119,7 +164,7 @@ public class InputData {
 				readValue = reader.nextDouble();
 				if (readValue >= min && readValue <= max) finish = true;
 			} else {
-				System.out.println(ERRORE_LIMITI + min + "-" + max);
+				System.out.println(ERROR_LIMIT + min + "-" + max);
 				String trashing = reader.next();
 			}
 		} while (!finish);
@@ -137,7 +182,7 @@ public class InputData {
 				readValue = reading.charAt(0);
 				finish = true;
 			}
-			else System.out.println(ERRORE_STRINGA_VUOTA);
+			else System.out.println(ERROR_EMPTY_STRING);
 		} while (!finish);
 		return readValue;
 	}
@@ -147,13 +192,19 @@ public class InputData {
 		boolean finish = false;
 		char readValue = '\0';
 		do {
+			
+			readValue = readChar(message);
+			readValue = Character.toUpperCase(readValue);
+		    if (validChar.indexOf(readValue) != -1) finish = true;
+			/*
 			System.out.print(message);
 			String reading = reader.next();
 			if (reading.length() == 1 && validChar.indexOf(reading.toUpperCase().charAt(0)) != -1) {
 				readValue = reading.charAt(0);
 				finish = true;
 			}
-			else System.out.println(ERRORE_CHAR_CONSENTITI + validChar);
+			*/
+			else System.out.println(ERROR_CHAR_ALLOWED + validChar);
 		} while (!finish);
 		return readValue;
 	}
@@ -169,7 +220,7 @@ public class InputData {
 				readValue = reading.charAt(0);
 				finish = true;
 			}
-			else System.out.println(ERRORE_CHAR_CONSENTITI + validChar);
+			else System.out.println(ERROR_CHAR_ALLOWED + validChar);
 		} while (!finish);
 		return readValue;
 	}
@@ -188,7 +239,7 @@ public class InputData {
 			reading = readString(message);
 			reading = reading.trim(); // Rimuove i caratteri di spaziatura
 			if (reading.length() > 0) finish = true;
-			else System.out.println(ERRORE_STRINGA_VUOTA);
+			else System.out.println(ERROR_EMPTY_STRING);
 		} while (!finish);
 		return reading;
 	}

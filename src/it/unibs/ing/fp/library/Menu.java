@@ -1,21 +1,30 @@
 package it.unibs.ing.fp.library;
 
+/**
+ * <h1> Class Menu </h1>
+ * <p>
+ * 
+ * @author Simone Cavicchioli
+ * @version v2.0
+ * @since 2016-04-26
+ */
+
 public class Menu {
 	final private static String FRAME = "--------------------------------";
 	final private static String OUTRO = "0\tEsci";
 	final private static String RICHIESTA_INSERIMENTO = "Digita il numero dell'opzione desiderata > ";
 
 	private String title;
-	private String [] voci;
+	private String [] options;
 
 	/**
 	 * Constructor.
-	 * @param title - The message ...
-	 * @param voci - The list of options
+	 * @param title - The description of the menu
+	 * @param options - The list of options
 	 */	
-	public Menu(String title, String [] voci) {
+	public Menu(String title, String [] options) {
 		this.title = title;
-		this.voci = voci;
+		this.options = options;
 	}
 
 	/**
@@ -24,7 +33,7 @@ public class Menu {
 	 */
 	public int choise() {
 		printMenu();
-		return InputData.readIntWithLimit(RICHIESTA_INSERIMENTO, 0, voci.length);	 
+		return InputData.readIntWithLimit(RICHIESTA_INSERIMENTO, 0, options.length);	 
   	}
 	
 	/**
@@ -34,8 +43,8 @@ public class Menu {
 		System.out.println(FRAME);
 		System.out.println(title);
 		System.out.println(FRAME);
-	    for (int i=0; i<voci.length; i++) {
-	    	System.out.println((i + 1) + "\t" + voci[i]);
+	    for (int i = 0; i < options.length; i++) {
+	    	System.out.println((i + 1) + "\t" + options[i]);
 		}
 	    System.out.println();
 		System.out.println(OUTRO);
