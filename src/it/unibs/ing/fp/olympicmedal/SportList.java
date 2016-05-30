@@ -15,7 +15,6 @@ import it.unibs.ing.fp.library.Menu;
  */
 
 public class SportList {
-	//	private static final String SPORT_FORMAT = "%s, ";
 	private Vector <Sport> sports;
 	
 	/**

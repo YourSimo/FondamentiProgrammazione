@@ -16,7 +16,6 @@ import it.unibs.ing.fp.library.Menu;
  */
 
 public class NationList {
-	//	private static final String NATION_FORMAT = "%s, ";
 	private static final String MSG_NO_NATION = "Attenzione non e' presente nessuna nazione";
 	private static final String MSG_RANKING = "ECCO IL MEDAGLIERE OLIMPICO";
 	private static final String MSG_RANKING_SORTED = "ECCO IL MEDAGLIERE OLIMPICO ORDINATO";

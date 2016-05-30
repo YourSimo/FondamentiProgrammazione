@@ -44,7 +44,7 @@ public class Sport {
 	 * @param medal - The medal ...
 	 * @param index - The position ...
 	 */
-	public void addRanking(Nation medal, int index) {
-		ranking[index] = medal;
+	public void addRanking(Nation nation, int index) {
+		ranking[index] = nation;
 	}
 }
