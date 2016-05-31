@@ -2,6 +2,17 @@ package it.unibs.ing.fp.olympicmedal;
 
 import it.unibs.ing.fp.library.Formatting;
 
+/**
+ * <h1> Class Medals </h1>
+ * <p>
+ * 
+ * @author Federico Avino 
+ * @author Matteo Bellicini
+ * @author Simone Cavicchioli 
+ * @version v2.0
+ * @since 2016-05-10
+ */
+
 public class Medals {
 	public final static int WIDTH_FIRST_COLUMN = 12;
 	public final static int WIDTH_MEDAL_COLUMN = 9;

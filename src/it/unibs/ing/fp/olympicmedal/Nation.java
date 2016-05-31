@@ -2,7 +2,18 @@ package it.unibs.ing.fp.olympicmedal;
 
 import it.unibs.ing.fp.library.Formatting;
 
-public class Nation implements Comparable<Nation>{
+/**
+ * <h1> Class Nation </h1>
+ * <p>
+ * 
+ * @author Federico Avino 
+ * @author Matteo Bellicini
+ * @author Simone Cavicchioli 
+ * @version v2.0
+ * @since 2016-05-10
+ */
+
+public class Nation implements Comparable <Nation> {
 	private String name;
 	private int [] numMedal;
 	
@@ -17,6 +28,7 @@ public class Nation implements Comparable<Nation>{
 	}
 	
 	//	GETTERS
+	
 	/**
 	 * Returns the name of Nation.
 	 * @return name of Nation
@@ -25,6 +37,11 @@ public class Nation implements Comparable<Nation>{
 		return name;
 	}
 	
+	/**
+	 * Returns the number of Medals
+	 * @param medal - The position of podium
+	 * @return the number of medals
+	 */
 	public int getNumMedal(int medal) {
 		return numMedal[medal];
 	}
@@ -36,6 +53,30 @@ public class Nation implements Comparable<Nation>{
 	public void addMedal(int medal) {
 		numMedal[medal]++;
 	}
+	
+	@Override
+	public int compareTo(Nation other) {
+		// -1 minore di, 0 =, +1 maggiore di;
+		int result = 0, gold = 0, silver = 1, bronze = 2;
+		if(other.numMedal[gold] > this.numMedal[gold]) result = 1;
+		
+		else if(other.numMedal[gold] == this.numMedal[gold] 
+				&& other.numMedal[silver] > this.numMedal[silver]) result = 1;
+		
+		else if(other.numMedal[gold] == this.numMedal[gold] 
+				&& other.numMedal[silver] == this.numMedal[silver] 
+						&& other.numMedal[bronze] == this.numMedal[bronze]) result = 1;
+		
+		else result = -1;
+		
+		return result;
+		
+		//ascending order
+		//	return this.numMedal[medal] - other.getNumMedal(medal);
+		
+		//descending order
+		//	return other.numMedal[medal] - this.getNumMedal(medal);
+	}
 
 	@Override
 	public String toString() {
@@ -44,15 +85,5 @@ public class Nation implements Comparable<Nation>{
 		for (int i = 0; i < Medals.NAME_MEDALS.length; i++)
 			result.append(Formatting.centered(String.valueOf(numMedal[i]), Medals.WIDTH_MEDAL_COLUMN));
 		return result.toString();
-	}
-
-	@Override
-	public int compareTo(Nation compareNation) {
-		int medal = 0;
-		//ascending order
-		return this.numMedal[medal] - compareNation.getNumMedal(medal);
-		
-		//descending order
-		//return compareQuantity - this.quantity;
 	}
 }

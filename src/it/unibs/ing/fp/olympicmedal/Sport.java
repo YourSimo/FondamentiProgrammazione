@@ -1,5 +1,16 @@
 package it.unibs.ing.fp.olympicmedal;
 
+/**
+ * <h1> Class Sport </h1>
+ * <p>
+ * 
+ * @author Federico Avino 
+ * @author Matteo Bellicini
+ * @author Simone Cavicchioli 
+ * @version v2.0
+ * @since 2016-05-10
+ */
+
 public class Sport {
 	private String name;
 	private boolean existing;
@@ -40,9 +51,9 @@ public class Sport {
 	}
 	
 	/**
-	 * Add ...
-	 * @param medal - The medal ...
-	 * @param index - The position ...
+	 * Add ranking.
+	 * @param nation - The Nation to add
+	 * @param index - The position of podium
 	 */
 	public void addRanking(Nation nation, int index) {
 		ranking[index] = nation;

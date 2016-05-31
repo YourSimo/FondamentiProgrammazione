@@ -10,7 +10,7 @@ import it.unibs.ing.fp.library.Menu;
  * @author Federico Avino 
  * @author Matteo Bellicini
  * @author Simone Cavicchioli 
- * @version v1.0
+ * @version v2.0
  * @since 2016-05-10
  */
 
@@ -67,7 +67,7 @@ public class SportList {
 	
 	/**
 	 * Returns a user chooses Sport or nothing.
-	 * @param message - ...
+	 * @param message - The message of Menu
 	 * @return Sport if user choose a number different from 0; nothing otherwise
 	 */
 	public Sport choiceSport(String message) {
