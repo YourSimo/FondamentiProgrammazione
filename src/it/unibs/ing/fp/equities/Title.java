@@ -1,6 +1,7 @@
 package it.unibs.ing.fp.equities;
 
 import it.unibs.ing.fp.library.Formatting;
+import it.unibs.ing.fp.math.Casuale;
 
 /**
  * <h1> Class Title </h1>
@@ -14,39 +15,30 @@ import it.unibs.ing.fp.library.Formatting;
  */
 
 public class Title {
+	private static final double OFFSET = 3;
+	
 	private String name;
-	private int amount;	//	amount ---> ItemOwned
 	private double initialValue;
 	private double randomValue;
 	
 	/**
 	 * Constructor.
 	 * @param name - The name of Title
-	 * @param amount - The amount of Title
 	 * @param initialValue - The staring value
-	 * @param randomValue - The random value
 	 */
-	public Title(String name, int amount, double initialValue, double randomValue) {
+	public Title(String name, double initialValue) {
 		setName(name);
-		setAmount(amount);
 		setInitialValue(initialValue);
-		setRandomValue(randomValue);
+		setRandomValue();
 	}
 	
-	//	Getters
+	//	GETTERS
 	
 	/**
 	 * @return the name
 	 */
 	public String getName() {
 		return name;
-	}
-	
-	/**
-	 * @return the amount
-	 */
-	public int getAmount() {
-		return amount;
 	}
 	
 	/**
@@ -63,20 +55,13 @@ public class Title {
 		return randomValue;
 	}
 	
-	//	Setters
+	//	SETTERS
 
 	/**
 	 * @param name the name to set
 	 */
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	/**
-	 * @param amount the amount to set
-	 */
-	public void setAmount(int amount) {
-		this.amount = amount;
 	}
 	
 	/**
@@ -86,20 +71,18 @@ public class Title {
 		this.initialValue = initialValue;
 	}
 
-	/**
-	 * @param randomValue the randomValue to set
-	 */
-	public void setRandomValue(double randomValue) {
-		this.randomValue = randomValue;
+	public void setRandomValue() {
+		randomValue = Casuale.randomDouble(Math.max(0, initialValue - OFFSET), initialValue + OFFSET);
 	}
+	
+	//	TO_STRING
 	
 	@Override
 	public String toString() {
 		StringBuffer result = new StringBuffer();
-		result.append(Formatting.inColumn(name.toUpperCase(), TitleList.WIDTH_FIRST_COLUMN));
-		result.append(Formatting.centered(String.valueOf(amount), TitleList.WIDTH_OTHER_COLUMN));
-		result.append(Formatting.centered(String.valueOf(initialValue), TitleList.WIDTH_OTHER_COLUMN));
-		result.append(Formatting.centered(String.valueOf(randomValue), TitleList.WIDTH_OTHER_COLUMN));
+		result.append(Formatting.inColumn(name.toUpperCase(), EquitiesMain.WIDTH_FIRST_COLUMN));
+		result.append(Formatting.centered(String.valueOf(initialValue), EquitiesMain.WIDTH_OTHER_COLUMN));
+		result.append(Formatting.centered(String.valueOf(randomValue), EquitiesMain.WIDTH_OTHER_COLUMN));
 		return result.toString();
 	}
 }
