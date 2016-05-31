@@ -11,10 +11,11 @@ package it.unibs.ing.fp.bankaccount;
  */
 
 public class BankAccount {
-	private final static String MSG = "Il suo bilancio è di: %.2f€\n";
-	private final static String MSG_INSUFF_CREDIT = "Attenzione credito insufficiente!\n";
-	private final static String MSG_WITHDRAW = "Prelevato %.2f€\n";
-	private final static double DEFAULT_BALANCE = 1000;
+	private static final String MSG = "Il suo bilancio è di: %.2f€\n";
+	private static final String MSG_DEPOSIT = "Depositato: %.2f€\n";
+	private static final String MSG_INSUFF_CREDIT = "Attenzione credito insufficiente!\n";
+	private static final String MSG_WITHDRAW = "Prelevato: %.2f€\n";
+	private static final double DEFAULT_BALANCE = 1000;
 	
 	private Person owner;
 	private double balance = 0.00;
@@ -51,6 +52,7 @@ public class BankAccount {
 	 * @return final balance
 	 */
 	public double deposit(double amount) {
+		System.out.printf(MSG_DEPOSIT, amount);
 		return balance += amount;
 	}
 	
@@ -60,12 +62,14 @@ public class BankAccount {
 	 * <tt>else</tt> the amount of money.
 	 * @param amount - The amount of money 
 	 * @return the balance or the amount of money taken
+	 * @throws IllegalArgumentException
 	 */
-	public double withdraw(double amount) {
+	public double withdraw(double amount) throws IllegalArgumentException {
 		double result = amount;
 		if (result > balance) {
 			result = balance;
-			System.out.print(MSG_INSUFF_CREDIT);
+			throw new IllegalArgumentException(MSG_INSUFF_CREDIT); 
+			//	System.out.print(MSG_INSUFF_CREDIT);
 		}
 		else {
 			balance -= result;
@@ -97,8 +101,15 @@ public class BankAccount {
 		ba1.deposit(100.52);
 		printBalance(ba1);
 		
-		ba1.withdraw(2000);
-		printBalance(ba1);
+		try {
+			ba1.withdraw(2000);
+		}
+		catch (IllegalArgumentException e){
+			System.out.print(e.getMessage());
+		}
+		finally {
+			printBalance(ba1);
+		}
 		
 		ba1.withdraw(400);
 		printBalance(ba1);
