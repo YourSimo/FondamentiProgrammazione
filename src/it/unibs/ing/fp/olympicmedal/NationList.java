@@ -1,5 +1,6 @@
 package it.unibs.ing.fp.olympicmedal;
 
+import java.util.Collections;
 import java.util.Vector;
 import it.unibs.ing.fp.library.Formatting;
 import it.unibs.ing.fp.library.Menu;
@@ -79,9 +80,9 @@ public class NationList {
 	public Nation choiceNation(String question) {
 		String [] listNationNames = getName();
 		Menu choiceList = new Menu (question, listNationNames);
-		int choiseUser = choiceList.choise();
-		if(choiseUser == 0) return null;
-		else return nations.get(choiseUser - 1);
+		int choiceUser = choiceList.choice();
+		if(choiceUser == 0) return null;
+		else return nations.get(choiceUser - 1);
 	}
 	
 	public void visualizzaMedagliere() {
@@ -101,21 +102,12 @@ public class NationList {
 			System.out.println(MSG_NO_NATION);
 			return;
 		}
-		Vector <Nation> matrice = nations;
-		for(int i = 2; i >= 0; i--) {
-			for(int j = 0; j < matrice.size() - 1; j++) {
-				if(matrice.get(j).lessThan(matrice.get(j + 1), i)) {
-					Nation tmp = matrice.get(j);
-					matrice.set(j, matrice.get(j + 1));
-					matrice.set(j + 1, tmp);
-				}
-			}
-		}
-		
+		Vector <Nation> orderNation = nations;
+		Collections.sort(orderNation);
 		System.out.println(Formatting.framing(MSG_RANKING_SORTED));
 		System.out.println(Medals.heading());
-		for(int i = 0; i < matrice.size(); i++) {
-			System.out.println(matrice.get(i).toString());
+		for(int i = 0; i < orderNation.size(); i++) {
+			System.out.println(orderNation.get(i).toString());
 		}
 	}
 }

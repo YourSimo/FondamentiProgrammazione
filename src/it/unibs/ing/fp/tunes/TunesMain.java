@@ -38,7 +38,7 @@ public class TunesMain {
 		Menu menuMain = new Menu(TITLE, VOCIMENU);
 
 		do {
-			int selezione = menuMain.choise();
+			int selezione = menuMain.choice();
 			fineProgramma = eseguiFunzioneScelta(selezione, myCollection);
 		} while(!fineProgramma);
 

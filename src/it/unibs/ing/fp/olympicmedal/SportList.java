@@ -73,7 +73,7 @@ public class SportList {
 	public Sport choiceSport(String message) {
 		String [] listSportsNames = getName();
 		Menu choicesList = new Menu(message, listSportsNames);
-		int choiseUser = choicesList.choise();
+		int choiseUser = choicesList.choice();
 		if (choiseUser == 0) return null;
 		else return sports.get(choiseUser - 1);
 	}

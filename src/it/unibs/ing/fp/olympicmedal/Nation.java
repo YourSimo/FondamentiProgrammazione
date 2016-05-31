@@ -2,7 +2,7 @@ package it.unibs.ing.fp.olympicmedal;
 
 import it.unibs.ing.fp.library.Formatting;
 
-public class Nation /*implements Sortable*/{
+public class Nation implements Comparable<Nation>{
 	private String name;
 	private int [] numMedal;
 	
@@ -16,12 +16,17 @@ public class Nation /*implements Sortable*/{
 		numMedal = new int[Medals.NUM_MEDALS];
 	}
 	
+	//	GETTERS
 	/**
 	 * Returns the name of Nation.
 	 * @return name of Nation
 	 */
 	public String getName() {
 		return name;
+	}
+	
+	public int getNumMedal(int medal) {
+		return numMedal[medal];
 	}
 	
 	/**
@@ -31,11 +36,6 @@ public class Nation /*implements Sortable*/{
 	public void addMedal(int medal) {
 		numMedal[medal]++;
 	}
-	
-	public boolean lessThan(Nation otherNation, int podio) {
-		if(numMedal[podio] < otherNation.numMedal[podio]) return true;
-		else return false;
-	}
 
 	@Override
 	public String toString() {
@@ -44,5 +44,15 @@ public class Nation /*implements Sortable*/{
 		for (int i = 0; i < Medals.NAME_MEDALS.length; i++)
 			result.append(Formatting.centered(String.valueOf(numMedal[i]), Medals.WIDTH_MEDAL_COLUMN));
 		return result.toString();
+	}
+
+	@Override
+	public int compareTo(Nation compareNation) {
+		int medal = 0;
+		//ascending order
+		return this.numMedal[medal] - compareNation.getNumMedal(medal);
+		
+		//descending order
+		//return compareQuantity - this.quantity;
 	}
 }

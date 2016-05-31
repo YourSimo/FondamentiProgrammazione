@@ -93,7 +93,7 @@ public class OlympicMedalMain {
 		boolean finish = false;
 		
 		do {
-			int voceSelezionata = menu.choise();
+			int voceSelezionata = menu.choice();
 			
 			switch(voceSelezionata) {
 			case 1:

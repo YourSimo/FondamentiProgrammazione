@@ -41,7 +41,7 @@ public class TamaZooMain {
 	
 	private static TamaZoo myTamaZoo = new TamaZoo();
 	
-	public static Tamagotchi makeTamagotchi() {
+	private static Tamagotchi makeTamagotchi() {
 		String nome = InputData.readStringNotEmpty(MSG_NEW_NAME);
 		int affettività = Casuale.randomInt(Tamagotchi.MIN_SAZ, Tamagotchi.MAX_SAZ);
 		int sazietà = Casuale.randomInt(Tamagotchi.MIN_SAZ, Tamagotchi.MAX_SAZ);
@@ -87,7 +87,7 @@ public class TamaZooMain {
 		boolean finish = false;
 		
 		do {
-			int itemSelected = menu.choise();
+			int itemSelected = menu.choice();
 			switch(itemSelected) {
 				case 1:
 					int numCarezze = Casuale.randomInt(MIN_CAREZZE, MAX_CAREZZE);
