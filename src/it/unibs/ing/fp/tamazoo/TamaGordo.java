@@ -9,7 +9,7 @@ import it.unibs.ing.fp.tamagotchi.Tamagotchi;
  * @author Federico Avino 
  * @author Matteo Bellicini
  * @author Simone Cavicchioli
- * @version v1.0
+ * @version v2.0
  * @since 2016-05-17
  */
 
@@ -18,7 +18,7 @@ public class TamaGordo extends Tamagotchi{
 	
 	/**
 	 * Constructor.
-	 * @param nome - The name of Object Tamagotchi
+	 * @param nome - The name of Object TamaGordo
 	 * @param tipo - The type of Tamagotchi
 	 * @param sazietà - The level of sazietà
 	 */
@@ -28,7 +28,7 @@ public class TamaGordo extends Tamagotchi{
 	
 	/**
 	 * Give a number of carezze.
-	 * @param numCarezze - The number of carezze to give to the Object Tamagotchi
+	 * @param numCarezze - The number of carezze to give to the Object TamaGordo
 	 */
 	public void giveCarezze(int numCarezze) {
 		sazietà = Math.max(MIN_SAZ, sazietà - (numCarezze * DECREASE_SAZIETA * INCREASE_CAREZZE));
@@ -36,7 +36,7 @@ public class TamaGordo extends Tamagotchi{
 	
 	/**
 	 * Give a number of biscotti.
-	 * @param numBiscotti - The number of biscotti to give to the Object Tamagotchi
+	 * @param numBiscotti - The number of biscotti to give to the Object TamaGordo
 	 */
 	public void giveBiscotti(int numBiscotti) {
 		for(int i = 1; i <= numBiscotti; i++) sazietà = Math.min(sazietà * INCREASE_SAZIETA, MAX_SAZ);

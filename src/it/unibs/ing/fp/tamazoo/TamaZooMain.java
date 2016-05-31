@@ -13,7 +13,7 @@ import it.unibs.ing.fp.tamagotchi.Tamagotchi;
  * @author Federico Avino 
  * @author Matteo Bellicini
  * @author Simone Cavicchioli
- * @version v1.0
+ * @version v2.0
  * @since 2016-05-17
  */
 
