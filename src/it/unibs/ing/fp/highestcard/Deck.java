@@ -16,7 +16,7 @@ import it.unibs.ing.fp.math.Casuale;
  */
 
 public class Deck {
-	private ArrayList<Card> cards;
+	private ArrayList <Card> cards;
 	
 	/**
 	 * Constructor.

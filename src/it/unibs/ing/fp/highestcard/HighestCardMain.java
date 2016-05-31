@@ -59,7 +59,7 @@ public class HighestCardMain {
 		
 		boolean finish = false;
 		do {
-			int selezione = mainMenu.choise();
+			int selezione = mainMenu.choice();
 			switch (selezione) {
 				case 1: 
 					play(itDeck);
