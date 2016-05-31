@@ -10,9 +10,12 @@ package it.unibs.ing.fp.library;
  */
 
 public class Formatting {
-	private final static String SPACE = " ";
-	private final static String FRAME = "-";
-	private final static String HEAD = "\n";
+	private static final String ERR_NEGATIVE_VALUE = "Attenzione il valore inserito è negativo o uguale a 0!\n";
+	
+	private static final String SPACE = " ";
+	private static final String FRAME = "-";
+	private static final String HEAD = "\n";
+	
 
 	/**
 	 * Returns a String isolated. <p>
@@ -55,17 +58,44 @@ public class Formatting {
 	}
 
 	/**
-	 * Returns a String in column.
+	 * Returns a String in column. <p>
+     * Examples:
+     * <blockquote><pre>
+     * inColumn("test", 2) returns "test"
+     * inColumn("value", 7) returns "value  "
+     * inColumn("", 5) return ""
+     * </pre></blockquote>
+     * 
 	 * @param s - The String to be placed in column
 	 * @param width - The width of column
 	 * @return a String in column
+	 * @exception  IllegalArgumentException  if {@code width} is negative or equals 0.
 	 */
 	public static String inColumn(String s, int width) {
-		StringBuffer result = new StringBuffer(width);
-		int numCharToPrint = Math.min(s.length(), width);
-		result.append(s.substring(0, numCharToPrint));
-		for (int i = s.length() + 1; i <= width; i++) result.append(SPACE);
-		return result.toString();
+		if(width <= 0) throw new IllegalArgumentException(ERR_NEGATIVE_VALUE);
+		else {
+			StringBuffer result = new StringBuffer(width);
+			int numCharToPrint = Math.min(s.length(), width);
+			result.append(s.substring(0, numCharToPrint));
+			for (int i = s.length() + 1; i <= width; i++) result.append(SPACE);
+			return result.toString();
+		}
+	}
+	
+	/**
+	 * Returns a String indentation.
+	 * @param s - The String indentation
+	 * @param width - The width of indentation
+	 * @return a String indentation
+	 */
+	public static String indentation(String s, int width) {
+		if(width <= 0) throw new IllegalArgumentException(ERR_NEGATIVE_VALUE);
+		else {
+			StringBuffer result = new StringBuffer(s.length() + width);
+			for (int i = 0; i < width; i++) result.append(SPACE);
+			result.append(s);
+			return result.toString();
+		}
 	}
 	
 	/**
@@ -74,18 +104,20 @@ public class Formatting {
 	 * @param width - The width of column
 	 * @return a String centered
 	 */
-	public static String centered(String s, int width) {	
-		StringBuffer result = new StringBuffer(width);
-		
-		if (width <= s.length()) result.append(s.substring(width));
+	public static String centered(String s, int width) {
+		if(width <= 0) throw new IllegalArgumentException(ERR_NEGATIVE_VALUE);
 		else {
-			int spaceBefore = (width - s.length())/2;
-			int spaceAfter = width - spaceBefore - s.length();
-			for (int i = 1; i <= spaceBefore; i++) result.append(SPACE);
-			result.append(s);	
-			for (int i = 1; i <= spaceAfter; i++) result.append(SPACE);
+			StringBuffer result = new StringBuffer(width);
+			if(width <= s.length()) result.append(s.substring(width));
+			else {
+				int spaceBefore = (width - s.length())/2;
+				int spaceAfter = width - spaceBefore - s.length();
+				for (int i = 1; i <= spaceBefore; i++) result.append(SPACE);
+				result.append(s);	
+				for (int i = 1; i <= spaceAfter; i++) result.append(SPACE);
+			}
+			return result.toString();
 		}
-		return result.toString();
 	}
 	
 	/**
@@ -95,8 +127,11 @@ public class Formatting {
 	 * @return a String of cloned characters
 	 */
 	public static String cloneChar(char c, int width) {
-		StringBuffer result = new StringBuffer(width);
-		 for (int i = 0; i < width; i++) result.append(c);
-		 return result.toString();
+		if(width <= 0) throw new IllegalArgumentException(ERR_NEGATIVE_VALUE);
+		else {
+			StringBuffer result = new StringBuffer(width);
+			for (int i = 0; i < width; i++) result.append(c);
+			return result.toString();
+		}
 	}
 }
