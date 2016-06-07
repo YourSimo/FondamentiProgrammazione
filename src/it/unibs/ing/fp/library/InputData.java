@@ -246,8 +246,8 @@ public class InputData {
 
 	// Metodo yesOrNo
 	public static boolean yesOrNo(String message) {
-		String myMessage = message + "(" + YES_ANSWER + "/" + NO_ANSWER + ")";
-		char readValue = readCharLimitedSensitive(myMessage, String.valueOf(YES_ANSWER) + String.valueOf(NO_ANSWER));
+		String completeMessage = message + " [" + YES_ANSWER + "] [" + NO_ANSWER + "] ";
+		char readValue = readCharLimitedSensitive(completeMessage, String.valueOf(YES_ANSWER) + String.valueOf(NO_ANSWER));
 		if (readValue == YES_ANSWER) return true;
 		else return false;
 	}
