@@ -1,7 +1,5 @@
 package it.unibs.ing.fp.library;
 
-import java.util.Vector;
-
 /**
  * <h1> Class Menu </h1>
  * <p>
@@ -30,15 +28,6 @@ public class Menu {
 	}
 
 	/**
-	 * Returns the user's choice from the list of options.
-	 * @return a int number between 0 and the number of options
-	 */
-	public int choice() {
-		printMenu();
-		return InputData.readIntWithLimit(RICHIESTA_INSERIMENTO, 0, options.length);	 
-  	}
-	
-	/**
 	 * Prints the Menu with title and list of options.
 	 */
 	public void printMenu() {
@@ -51,5 +40,14 @@ public class Menu {
 	    System.out.println();
 		System.out.println(OUTRO);
 	    System.out.println();
+  	}
+	
+	/**
+	 * Returns the user's choice from the list of options.
+	 * @return a int number between 0 and the number of options
+	 */
+	public int choice() {
+		printMenu();
+		return InputData.readIntWithLimit(RICHIESTA_INSERIMENTO, 0, options.length);	 
   	}
 }
