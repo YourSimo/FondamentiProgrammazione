@@ -16,6 +16,7 @@ public class BankAccount {
 	private static final String MSG_INSUFF_CREDIT = "Attenzione credito insufficiente!\n";
 	private static final String MSG_WITHDRAW = "Prelevato: %.2f€\n";
 	private static final double DEFAULT_BALANCE = 1000;
+	private static final String ERR_VALUE = "Attenzione il valore inserito non è accettabile!\n";
 	
 	private Person owner;
 	private double balance = 0.00;
@@ -47,13 +48,20 @@ public class BankAccount {
 	}
 	
 	/**
-	 * Returns the incremental balance of a certain amount.
-	 * @param amount - The amount of money to increase the balance
+	 * Deposit money in this BankAccount.
+	 * @param amount - The amount of money to be deposited
+	 * (Pre-condition: amount >= 0)
 	 * @return final balance
 	 */
 	public double deposit(double amount) {
-		System.out.printf(MSG_DEPOSIT, amount);
-		return balance += amount;
+		if(amount >= 0) {
+			System.out.printf(MSG_DEPOSIT, amount);
+			return balance += amount;
+		}
+		else {
+			System.out.print(ERR_VALUE);
+			return balance;
+		}
 	}
 	
 	/**
@@ -104,7 +112,7 @@ public class BankAccount {
 		try {
 			ba1.withdraw(2000);
 		}
-		catch (IllegalArgumentException e){
+		catch (IllegalArgumentException e) {
 			System.out.print(e.getMessage());
 		}
 		finally {
