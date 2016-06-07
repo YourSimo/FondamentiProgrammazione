@@ -3,7 +3,7 @@
   realizations="true" associations="true" dependencies="true" nesting-relationships="true" router="FAN">  
   <class id="1" language="java" name="it.unibs.ing.fp.equities.ItemOwned" project="FondamentiProgrammazione" 
     file="/FondamentiProgrammazione/src/it/unibs/ing/fp/equities/ItemOwned.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="101" width="111" x="125" y="37"/>    
+    <position height="191" width="135" x="276" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -12,7 +12,7 @@
   </class>  
   <class id="2" language="java" name="it.unibs.ing.fp.equities.EquitiesMain" project="FondamentiProgrammazione" 
     file="/FondamentiProgrammazione/src/it/unibs/ing/fp/equities/EquitiesMain.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="101" width="125" x="276" y="37"/>    
+    <position height="263" width="193" x="62" y="394"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -21,7 +21,7 @@
   </class>  
   <class id="3" language="java" name="it.unibs.ing.fp.equities.TitleList" project="FondamentiProgrammazione" 
     file="/FondamentiProgrammazione/src/it/unibs/ing/fp/equities/TitleList.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="137" width="145" x="42" y="178"/>    
+    <position height="317" width="175" x="41" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -30,7 +30,7 @@
   </class>  
   <class id="4" language="java" name="it.unibs.ing.fp.equities.Title" project="FondamentiProgrammazione" 
     file="/FondamentiProgrammazione/src/it/unibs/ing/fp/equities/Title.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="353" width="193" x="208" y="355"/>    
+    <position height="281" width="175" x="43" y="1072"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -39,42 +39,71 @@
   </class>  
   <class id="5" language="java" name="it.unibs.ing.fp.equities.Wallet" project="FondamentiProgrammazione" 
     file="/FondamentiProgrammazione/src/it/unibs/ing/fp/equities/Wallet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="101" width="111" x="248" y="178"/>    
+    <position height="335" width="229" x="83" y="697"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <dependency id="6">    
-    <end type="SOURCE" refId="1"/>    
-    <end type="TARGET" refId="3"/>  
-  </dependency>  
-  <association id="7">    
+  <association id="6">    
+    <bendpoint x="285" y="394"/>    
     <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="8" name="elencoTitoliAcquisiti"/>      
-      <multiplicity id="9" minimum="0" maximum="2147483647"/>    
+      <attribute id="7" name="elencoTitoliAcquisiti"/>      
+      <multiplicity id="8" minimum="0" maximum="2147483647"/>    
     </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
+    <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
+  <dependency id="9">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="2"/>  
+  </dependency>  
   <association id="10">    
-    <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="11" name="elencoTitoli"/>      
-      <multiplicity id="12" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="13">    
-    <bendpoint x="217" y="178"/>    
+    <bendpoint x="342" y="394"/>    
+    <bendpoint x="342" y="697"/>    
     <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="14" name="title"/>      
-      <multiplicity id="15" minimum="0" maximum="1"/>    
+      <attribute id="11" name="title">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="12" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="4" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
+  <dependency id="13">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="4"/>  
+  </dependency>  
+  <association id="14">    
+    <bendpoint x="31" y="394"/>    
+    <bendpoint x="31" y="697"/>    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="15" name="elencoTitoli">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="16" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="17">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="5"/>  
+  </dependency>  
+  <dependency id="18">    
+    <bendpoint x="52" y="697"/>    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="2"/>  
+  </dependency>  
+  <dependency id="19">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="2"/>  
+  </dependency>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true" static="true"/>    

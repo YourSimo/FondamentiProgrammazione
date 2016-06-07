@@ -1,8 +1,20 @@
 package it.unibs.ing.fp.equities;
 
+import java.io.Serializable;
 import it.unibs.ing.fp.library.Formatting;
 
-public class ItemOwned {
+/**
+ * <h1> Class ItemOwned </h1>
+ * <p>
+ * 
+ * @author Federico Avino 
+ * @author Matteo Bellicini
+ * @author Simone Cavicchioli 
+ * @version v3.0
+ * @since 2016-05-24
+ */
+
+public class ItemOwned implements Serializable {
 	private Title title;
 	private int amount;	// maggiore di 1
 	
@@ -12,35 +24,13 @@ public class ItemOwned {
 	}
 	
 	//	GETTERS
-
-	/**
-	 * @return the title
-	 */
-	public Title getTitle() {
-		return title;
+	
+	public double getTotalInizialValue() {
+		return amount * title.getInitialValue();
 	}
 	
-	/**
-	 * @return the amount
-	 */
-	public int getAmount() {
-		return amount;
-	}
-	
-	//	SETTERS
-
-	/**
-	 * @param title - The title to set
-	 */
-	public void setTitle(Title title) {
-		this.title = title;
-	}
-	
-	/**
-	 * @param amount - The amount to set
-	 */
-	public void setAmount(int amount) {
-		this.amount = amount;
+	public double getTotalRandomValue() {
+		return amount * title.getRandomValue();
 	}
 	
 	//	TO_STRING

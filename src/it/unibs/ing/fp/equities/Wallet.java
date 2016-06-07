@@ -1,36 +1,38 @@
 package it.unibs.ing.fp.equities;
 
+import java.io.Serializable;
 import java.util.Vector;
 
 import it.unibs.ing.fp.library.Formatting;
 import it.unibs.ing.fp.library.Menu;
 
-public class Wallet {
+/**
+ * <h1> Class Wallet </h1>
+ * <p>
+ * 
+ * @author Federico Avino 
+ * @author Matteo Bellicini
+ * @author Simone Cavicchioli 
+ * @version v3.0
+ * @since 2016-05-24
+ */
+
+public class Wallet implements Serializable {
 	private static final String [] NAME_HEADING = {"Titoli", "Quantità", "Valore Iniziale", "Valore Casuale"};
-
 	private static final String TITLE_FRAME = "PORTAFOGLIO DI ";
-
 	private static final String SUB_TITLE_FRAME = null;
 	
 	private String name;
+	private TitleList elencoTitoli;
 	private Vector <ItemOwned> elencoTitoliAcquisiti;
-	//	private double totalInitialBatch = 0;
-	//	private double totalRandomBatch = 0;
-	//	private int numAzioniAcquisite;
 	
-	public Wallet(String name) {
-		this.setName(name);
+	public Wallet(String name, TitleList elencoTitoli) {
+		this.name = name;
+		this.elencoTitoli = elencoTitoli;
 		elencoTitoliAcquisiti = new Vector<ItemOwned>();
 	}
 	
 	//	GETTERS
-	
-	/**
-	 * @return the name
-	 */
-	public String getName() {
-		return name;
-	}
 	
 	/**
 	 * @return the totalInitialBatch
@@ -38,8 +40,7 @@ public class Wallet {
 	public double getTotalInitialBatch() {
 		double totalInitialBatch = 0;
 		for(int i = 0; i < elencoTitoliAcquisiti.size(); i++) {
-			totalInitialBatch += elencoTitoliAcquisiti.get(i).getAmount() * 
-							elencoTitoliAcquisiti.get(i).getTitle().getInitialValue();
+			totalInitialBatch += elencoTitoliAcquisiti.get(i).getTotalInizialValue();
 		}
 		return totalInitialBatch;
 	}
@@ -50,19 +51,9 @@ public class Wallet {
 	public double getTotalRandomBatch() {
 		double totalRandomBatch = 0;
 		for(int i = 0; i < elencoTitoliAcquisiti.size(); i++) {
-			totalRandomBatch += elencoTitoliAcquisiti.get(i).getAmount() * 
-							elencoTitoliAcquisiti.get(i).getTitle().getRandomValue();
+			totalRandomBatch += elencoTitoliAcquisiti.get(i).getTotalRandomValue();
 		}
 		return totalRandomBatch;
-	}
-	
-	//	SETTERS
-
-	/**
-	 * @param name the name to set
-	 */
-	public void setName(String name) {
-		this.name = name;
 	}
 	
 	//	MANAGEMENT
@@ -71,29 +62,9 @@ public class Wallet {
 		elencoTitoliAcquisiti.addElement(lotto);
 	}
 	
-	public void removeItemOwned(ItemOwned lotto) {
-		elencoTitoliAcquisiti.remove(lotto);
+	public void simulationChange() {
+		elencoTitoli.setRandomValues();
 	}
-	
-	//	MENU
-	
-	private String [] getItemOwnedNames() {
-		String [] result = new String[elencoTitoliAcquisiti.size()];
-		for(int i = 0; i < result.length; i++) result[i] = elencoTitoliAcquisiti.get(i).getTitle().getName();
-		return result;
-	}
-	
-	public ItemOwned choiceItemOwned(String question) {
-		String [] elencoNomiTitoli = getItemOwnedNames();
-		Menu choiceList = new Menu(question, elencoNomiTitoli);
-		int choiceUser = choiceList.choice();
-		if(choiceUser == 0) return null;
-		else return elencoTitoliAcquisiti.get(choiceUser - 1);
-	}
-	
-	
-	// simulazione valore random
-	
 
 	//	TO_STRING
 	
@@ -108,7 +79,7 @@ public class Wallet {
 	
 	public String toString() {
 		StringBuffer result = new StringBuffer();
-		result.append(Formatting.framing(TITLE_FRAME + getName()));
+		result.append(Formatting.framing(TITLE_FRAME + name));
 		result.append(heading());
 		for(int i = 0; i < elencoTitoliAcquisiti.size(); i++) elencoTitoliAcquisiti.get(i).toString();
 		result.append(Formatting.framing(SUB_TITLE_FRAME));

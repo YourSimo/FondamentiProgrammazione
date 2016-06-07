@@ -1,14 +1,24 @@
 package it.unibs.ing.fp.equities;
 
+import java.io.Serializable;
 import java.util.Vector;
-
 import it.unibs.ing.fp.library.Formatting;
-import it.unibs.ing.fp.library.Menu;
 
-public class TitleList {
+/**
+ * <h1> Class TitleList </h1>
+ * <p>
+ * 
+ * @author Federico Avino 
+ * @author Matteo Bellicini
+ * @author Simone Cavicchioli 
+ * @version v3.0
+ * @since 2016-05-24
+ */
+
+public class TitleList implements Serializable {
 	private static final String TITLE_FRAME = "ELENCO TITOLI";
 	private static final String [] NAME_HEADING = {"Titoli", "Valore Iniziale", "Valore Casuale"};
-	
+
 	private Vector <Title> elencoTitoli;
 	
 	public TitleList() {
@@ -19,32 +29,16 @@ public class TitleList {
 		elencoTitoli.add(title);
 	}
 	
-	public void removeTitle(Title title) {
-		elencoTitoli.remove(title);
+	public Title getTitle(int i) {
+		return elencoTitoli.get(i);
+	}
+	
+	public int getSize() {
+		return elencoTitoli.size();
 	}
 	
 	public void setRandomValues() {
 		for(int i = 0; i < elencoTitoli.size(); i++) elencoTitoli.get(i).setRandomValue();
-	}
-	
-	public boolean isEmpty() {
-		return(elencoTitoli.size() == 0);
-	}
-	
-	//	MENU
-	
-	private String [] getTitleNames() {
-		String [] result = new String[elencoTitoli.size()];
-		for(int i = 0; i < result.length; i++) result[i] = elencoTitoli.get(i).getName();
-		return result;
-	}
-	
-	public Title choiceTitle(String question) {
-		String [] elencoNomiTitoli = getTitleNames();
-		Menu choiceList = new Menu(question, elencoNomiTitoli);
-		int choiceUser = choiceList.choice();
-		if(choiceUser == 0) return null;
-		else return elencoTitoli.get(choiceUser - 1);
 	}
 	
 	//	TO_STRING

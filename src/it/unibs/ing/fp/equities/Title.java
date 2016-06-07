@@ -1,5 +1,7 @@
 package it.unibs.ing.fp.equities;
 
+import java.io.Serializable;
+
 import it.unibs.ing.fp.library.Formatting;
 import it.unibs.ing.fp.math.Casuale;
 
@@ -10,11 +12,11 @@ import it.unibs.ing.fp.math.Casuale;
  * @author Federico Avino 
  * @author Matteo Bellicini
  * @author Simone Cavicchioli 
- * @version v1.0
+ * @version v3.0
  * @since 2016-05-24
  */
 
-public class Title {
+public class Title implements Serializable {
 	private static final double OFFSET = 3;
 	
 	private String name;
@@ -27,8 +29,8 @@ public class Title {
 	 * @param initialValue - The staring value
 	 */
 	public Title(String name, double initialValue) {
-		setName(name);
-		setInitialValue(initialValue);
+		this.name = name;
+		this.initialValue = initialValue;
 		setRandomValue();
 	}
 	
@@ -37,13 +39,15 @@ public class Title {
 	/**
 	 * @return the name
 	 */
+	
 	public String getName() {
-		return name;
+		return name.toUpperCase();
 	}
 	
 	/**
 	 * @return the initialValue
 	 */
+	
 	public double getInitialValue() {
 		return initialValue;
 	}
@@ -51,25 +55,12 @@ public class Title {
 	/**
 	 * @return the randomValue
 	 */
+	
 	public double getRandomValue() {
 		return randomValue;
 	}
 	
 	//	SETTERS
-
-	/**
-	 * @param name the name to set
-	 */
-	public void setName(String name) {
-		this.name = name;
-	}
-	
-	/**
-	 * @param initialValue the initialValue to set
-	 */
-	public void setInitialValue(double initialValue) {
-		this.initialValue = initialValue;
-	}
 
 	public void setRandomValue() {
 		randomValue = Casuale.randomDouble(Math.max(0, initialValue - OFFSET), initialValue + OFFSET);
