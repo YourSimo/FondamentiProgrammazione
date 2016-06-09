@@ -18,6 +18,8 @@ import it.unibs.ing.fp.math.Casuale;
 
 public class Title implements Serializable {
 	private static final double OFFSET = 3;
+
+	private static final String TITLE_FORMAT = "[%s] ";
 	
 	private String name;
 	private double initialValue;
@@ -66,14 +68,20 @@ public class Title implements Serializable {
 		randomValue = Casuale.randomDouble(Math.max(0, initialValue - OFFSET), initialValue + OFFSET);
 	}
 	
-	//	TO_STRING
+	//	TO_STRING [ENEL]     3.5    :
 	
 	@Override
 	public String toString() {
 		StringBuffer result = new StringBuffer();
-		result.append(Formatting.inColumn(name.toUpperCase(), EquitiesMain.WIDTH_FIRST_COLUMN));
+		/*
+		result.append(Formatting.inColumn(String.format(TITLE_FORMAT, name.toUpperCase()), EquitiesMain.WIDTH_FIRST_COLUMN));
 		result.append(Formatting.centered(String.valueOf(initialValue), EquitiesMain.WIDTH_OTHER_COLUMN));
-		result.append(Formatting.centered(String.valueOf(randomValue), EquitiesMain.WIDTH_OTHER_COLUMN));
+		//	result.append(Formatting.centered(String.valueOf(randomValue), EquitiesMain.WIDTH_OTHER_COLUMN));
+		 */
+		 
+		result.append(String.format(TITLE_FORMAT, name.toUpperCase()));
+		result.append(String.valueOf(initialValue));
+		
 		return result.toString();
 	}
 }

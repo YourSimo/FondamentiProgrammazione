@@ -18,9 +18,9 @@ import it.unibs.ing.fp.library.Menu;
  */
 
 public class Wallet implements Serializable {
-	private static final String [] NAME_HEADING = {"Titoli", "Quantità", "Valore Iniziale", "Valore Casuale"};
+	private static final String [] NAME_HEADING = {"Titoli", "Qtà", "Val.Inz.", /*"Valore Casuale"*/};
 	private static final String TITLE_FRAME = "PORTAFOGLIO DI ";
-	private static final String SUB_TITLE_FRAME = null;
+	private static final String SUB_TITLE_FRAME = "";
 	
 	private String name;
 	private TitleList elencoTitoli;
@@ -70,8 +70,9 @@ public class Wallet implements Serializable {
 	
 	private static String heading() {
 		StringBuffer result = new StringBuffer();
-		result.append(Formatting.inColumn("", EquitiesMain.WIDTH_FIRST_COLUMN));
-		for(int i = 0; i < NAME_HEADING.length; i++) {
+		//result.append(Formatting.inColumn("\n", EquitiesMain.WIDTH_FIRST_COLUMN));
+		result.append("\n"+ Formatting.inColumn(NAME_HEADING[0], EquitiesMain.WIDTH_FIRST_COLUMN));
+		for(int i = 1; i < NAME_HEADING.length; i++) {
 			result.append(Formatting.centered(NAME_HEADING[i], EquitiesMain.WIDTH_OTHER_COLUMN));
 		}
 		return result.toString();
@@ -79,12 +80,13 @@ public class Wallet implements Serializable {
 	
 	public String toString() {
 		StringBuffer result = new StringBuffer();
-		result.append(Formatting.framing(TITLE_FRAME + name));
+		result.append(Formatting.framing(TITLE_FRAME + name.toUpperCase()));
 		result.append(heading());
-		for(int i = 0; i < elencoTitoliAcquisiti.size(); i++) elencoTitoliAcquisiti.get(i).toString();
-		result.append(Formatting.framing(SUB_TITLE_FRAME));
-		result.append(Formatting.indentation(String.valueOf(getTotalInitialBatch()), EquitiesMain.WIDTH_INDENTATION));
-		result.append(Formatting.centered(String.valueOf(getTotalRandomBatch()), EquitiesMain.WIDTH_OTHER_COLUMN));
+		for(int i = 0; i < elencoTitoliAcquisiti.size(); i++) result.append("\n" + elencoTitoliAcquisiti.get(i).toString());
+		result.append(Formatting.rowIsolated(""));
+		//	result.append(Formatting.framing(SUB_TITLE_FRAME));
+		result.append(Formatting.indentation("TOT. " + String.valueOf(getTotalInitialBatch()), EquitiesMain.WIDTH_INDENTATION));
+		//	result.append(Formatting.centered(String.valueOf(getTotalRandomBatch()), EquitiesMain.WIDTH_OTHER_COLUMN));
 		return result.toString();
 	}
 }

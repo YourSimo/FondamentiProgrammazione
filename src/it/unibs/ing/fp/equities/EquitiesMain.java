@@ -1,8 +1,11 @@
 package it.unibs.ing.fp.equities;
 
+import java.io.File;
+
 import it.unibs.ing.fp.hello.Hello;
 import it.unibs.ing.fp.library.InputData;
 import it.unibs.ing.fp.library.Menu;
+import it.unibs.ing.fp.library.OutputData;
 import it.unibs.ing.fp.olympicmedal.Nation;
 
 /**
@@ -17,27 +20,31 @@ import it.unibs.ing.fp.olympicmedal.Nation;
  */
 
 public class EquitiesMain {
-	public static final int WIDTH_FIRST_COLUMN = 7;
-	public static final int WIDTH_OTHER_COLUMN = 7;
-	public static final int WIDTH_INDENTATION = 12;
+	public static final int WIDTH_FIRST_COLUMN = 8;
+	public static final int WIDTH_OTHER_COLUMN = 15;
+	public static final int WIDTH_INDENTATION = 26;
+	
+	private static final String MSG_WALLET_NAME = "INSERIRE LA DENOMINAZIONE DEL PORTAFOGLIO CONSIDERATO: ";
+	private static final String MSG_TITLE_NAME = "INSERIRE LA DENOMINAZIONE DEL NUOVO TITOLO DA CREARE: ";
+	private static final String MSG_TITLE_VALUE = "INSERIRE IL PREZZO INIZIALE DEL TITOLO:%n[%s] ";
+	private static final String MSG_OTHER_TITLE = "INSERIRE UN ALTRO TITOLO IN ELENCO?";
+	private static final String MSG_TITLE_AMOUNT = "INSERIRE IL NUMERO DI AZIONI ACQUISTATE DEL TITOLO %s: ";
 	
 	private static final String MSG_INTRO = "BENVENUTO NEL PROGRAMMA GESTIONE TITOLI AZIONARI";
 	private static final String MSG_OUTRO = "A PRESTO";
 	
-	public static final String MAIN_QUESTION = "Scegli l'operazione da eseguire";
-	private static final String [] MAIN_MENU_ITEMS = {"Gestione elenco titoli", "Gestione portafoglio", "Simulazione giornagliera"};
-	
-	private static final String MSG_WALLET_NAME = "INSERIRE LA DENOMINAZIONE DEL PORTAFOGLIO CONSIDERATO: ";
-	private static final String MSG_TITLE_NAME = "INSERIRE LA DENOMINAZIONE DEL NUOVO TITOLO DA CREARE: ";
-	private static final String MSG_TITLE_VALUE = "INSERIRE IL PREZZO INIZIALE DEL TITOLO %s: ";
-	private static final String MSG_OTHER_TITLE = "INSERIRE UN ALTRO TITOLO IN ELENCO? ";
-	private static final String MSG_TITLE_AMOUNT = "INSERIRE IL NUMERO DI AZIONI ACQUISTATE DEL TITOLO %s: ";
-	
-	// la composizione di un portafoglio, che consiste nello stabilire, per ciascun titolo in elenco, un numero di azioni acquistate
+	private static final String NAME_FILE_TITLE = "archiviotitoli.dat";
+	final private static String MSG_NO_CAST = "ATTENZIONE PROBLEMI CON IL CAST";
+	final private static String MSG_OK_FILE = "CARICAMENTO DA FILE EFFETTUATO";
+	final private static String MSG_NO_FILE = "NON POSSO CARICARE DA FILE: ESEGUO CREAZIONE DA ZERO";
+	final private static String MSG_INTRO_PORTFOLIO = "SITUAZIONE PORTAFOGLIO";
+	final private static String MSG_PROCEDI = "PROCEDERE CON LA SIMULAZIONE ?";
+	final private static String MSG_SALVA = "SALVATAGGIO DATI";
+	final private static String MSG_INTRO_GIORNO = "GIORNO N.%d NUOVA SITUAZIONE INVESTIMENTI";
 	
 	private static Title makeTitle() {
 		String name = InputData.readStringNotEmpty(MSG_TITLE_NAME);
-		double value = InputData.readDoublePositive(String.format(MSG_TITLE_VALUE, name));
+		double value = InputData.readDoublePositive(String.format(MSG_TITLE_VALUE, name.toUpperCase()));
 		return new Title(name, value);
 	}
 	
@@ -66,35 +73,50 @@ public class EquitiesMain {
 		// TODO Auto-generated method stub
 		
 		Hello.sayHello(MSG_INTRO);
+	
+		File fileTitle = new File(NAME_FILE_TITLE);
+	  
+		Wallet portafoglio = null;
+		TitleList elencoTitoli = null;
+		Container contenitore = null;
 		
-		//	makeWallet();
+		boolean caricamentoRiuscito = false;
 		
-		Menu menuMain = new Menu(MAIN_QUESTION, MAIN_MENU_ITEMS);
-		
-		boolean finish = false;
-		
-		// chiede all’utente se gestire elenco titoli, composizione portafogli o simulazione
-		
-		do {
-			int itemSelected = menuMain.choice();
-			switch(itemSelected) {
-				case 1:
-
-					break;
-				case 2:
-					
-					break;
-				case 0:
-					finish = true;
-					break;
-				default:
-					System.out.println("Operazione non riconosciuta.");
-					break;
+		if(fileTitle.exists()) {
+			try {
+				contenitore = (Container)OutputData.loadSingleObject(fileTitle);
+				elencoTitoli = contenitore.getTitleList();
+				portafoglio = contenitore.getWallet();
+			} catch (ClassCastException e) {
+			   System.out.println(MSG_NO_CAST);
+			} finally {
+				if ((portafoglio != null) && (elencoTitoli != null)) {
+				   System.out.println(MSG_OK_FILE);
+				   caricamentoRiuscito = true;
+				}
 			}
-		} while(!finish);
+		}
+		
+		if (!caricamentoRiuscito) {
+			System.out.println(MSG_NO_FILE);
+			elencoTitoli = makeTitleList();
+			portafoglio = makeWallet(elencoTitoli);
+		}
+		System.out.println("\n" + MSG_INTRO_PORTFOLIO);
+	 	System.out.println(portafoglio.toString());
+			
+		int giorni = 0;
+		while (InputData.yesOrNo(MSG_PROCEDI)) {
+			 giorni++;
+			 elencoTitoli.setRandomValues();
+			 System.out.println(String.format(MSG_INTRO_GIORNO, giorni));
+		 	 System.out.println(portafoglio);
+		}
+			
+		System.out.println(MSG_SALVA);
+		contenitore = new Container(elencoTitoli, portafoglio);
+		OutputData.uploadSingleObject(fileTitle, contenitore);
 		
 		Hello.sayHello(MSG_OUTRO);
-		
-	}
-
+	 }
 }

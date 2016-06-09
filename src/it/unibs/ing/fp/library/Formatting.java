@@ -100,6 +100,15 @@ public class Formatting {
 	
 	/**
 	 * Returns a String centered.
+	 * Examples:
+     * <blockquote><pre>
+     * centered("test", 2) returns "te"
+     * centered("qtà" 4) returns "qtà "
+     * centered("math", 6) returns " math "
+     * centered("value", 7) returns " value "
+     * centered("", 5) return ""
+     * </pre></blockquote>
+     * 
 	 * @param s - The String to be placed in center
 	 * @param width - The width of column
 	 * @return a String centered
@@ -110,8 +119,8 @@ public class Formatting {
 			StringBuffer result = new StringBuffer(width);
 			if(width <= s.length()) result.append(s.substring(width));
 			else {
-				int spaceBefore = (width - s.length())/2;
-				int spaceAfter = width - spaceBefore - s.length();
+				int spaceAfter = (width - s.length())/2;
+				int spaceBefore = width - spaceAfter - s.length();
 				for (int i = 1; i <= spaceBefore; i++) result.append(SPACE);
 				result.append(s);	
 				for (int i = 1; i <= spaceAfter; i++) result.append(SPACE);

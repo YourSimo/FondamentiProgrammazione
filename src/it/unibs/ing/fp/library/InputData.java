@@ -15,8 +15,9 @@ import java.util.Scanner;
 public class InputData {
 	private static Scanner reader = makeScanner();
 	
-	private final static String ERROR_MIN = "Attenzione: e' richiesto un valore maggiore o uguale a ";
-	private final static String ERROR_MAX = "Attenzione: e' richiesto un valore minore o uguale a ";
+	private final static String ERROR_MIN = "Attenzione: è richiesto un valore maggiore o uguale a ";
+	private final static String ERROR_MAX = "Attenzione: è richiesto un valore minore o uguale a ";
+	private static final String ERROR_POSITIVE = "Attenzione: è richiesto un valore maggiore di 0";
 	private final static String ERROR_LIMIT = "Attenzione i valori ammessi sono nell'intervallo: ";
 	private final static String ERROR_CHAR_ALLOWED = "Attenzione sono consentiti solo i caratteri ";
 	private final static String ERROR_FORMAT = "Attenzione: il dato inserito non è nel formato corretto";
@@ -24,6 +25,8 @@ public class InputData {
 
 	private static final char YES_ANSWER = 'S';
 	private static final char NO_ANSWER = 'N';
+
+	
 	
 	
 	private static Scanner makeScanner() {
@@ -147,7 +150,15 @@ public class InputData {
 	}
 	
 	public static double readDoublePositive(String message) {
-		return readDoubleWithMin(message, 1);
+		boolean finish = false;
+		double readValue = 0;
+		do {
+			readValue = readDouble(message);
+			if (readValue > 0)
+				finish = true;
+			else System.out.println(ERROR_POSITIVE);
+		} while (!finish);
+		return readValue;
 	}
 	
 	public static double readDoubleNotNegative(String message) {
