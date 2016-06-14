@@ -10,7 +10,7 @@ public class Road {
 	public void inizializedRoad() {
 		for(int h = 0; h < TrafficSimulationMain.ROAD_HEIGHT; h++) {
 			for(int l = 0; l < TrafficSimulationMain.ROAD_LENGTH; l++) {
-				map [h][l] = 
+				//	map [h][l] = 
 				
 			}
 		}
