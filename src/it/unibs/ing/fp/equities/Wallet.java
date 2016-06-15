@@ -87,7 +87,7 @@ public class Wallet implements Serializable {
 		StringBuffer result = new StringBuffer();
 		result.append(Formatting.indentation("TOT. " + String.valueOf(String.format("%.2f", getTotalInitialBatch())), EquitiesMain.WIDTH_INDENTATION));
 		result.append(Formatting.centered("TOT. " + String.valueOf(String.format("%.2f", getTotalRandomBatch())), EquitiesMain.WIDTH_OTHER_COLUMN));
-		result.append(Formatting.centered("RIC." + String.valueOf(String.format("%.2f", getFinalResult())), EquitiesMain.WIDTH_OTHER_COLUMN));
+		result.append(Formatting.centered("SALDO " + String.valueOf(String.format("%.2f", getFinalResult())), EquitiesMain.WIDTH_OTHER_COLUMN));
 		return result.toString();
 	}
 	

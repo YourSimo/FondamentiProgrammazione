@@ -41,7 +41,7 @@ public class ItemOwned implements Serializable {
 		result.append(Formatting.inColumn(title.getName().toUpperCase(), EquitiesMain.WIDTH_FIRST_COLUMN));
 		result.append(Formatting.centered(String.valueOf(amount), EquitiesMain.WIDTH_OTHER_COLUMN));
 		result.append(Formatting.centered(String.valueOf(title.getInitialValue()), EquitiesMain.WIDTH_OTHER_COLUMN));
-		result.append(Formatting.centered(String.valueOf(String.format("%.3f", title.getRandomValue())), EquitiesMain.WIDTH_OTHER_COLUMN));
+		result.append(Formatting.centered(String.valueOf(String.format("%.2f", title.getRandomValue())), EquitiesMain.WIDTH_OTHER_COLUMN));
 		return result.toString();
 	}
 }

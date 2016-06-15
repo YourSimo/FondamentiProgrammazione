@@ -65,7 +65,7 @@ public class Title implements Serializable {
 	//	SETTERS
 	
 	public void setRandomValue() {
-		randomValue = Casuale.randomDouble(Math.max(0, getInitialValue() - OFFSET), getInitialValue() + OFFSET);
+		randomValue = Casuale.randomDouble(Math.max(0.01, getInitialValue() - OFFSET), getInitialValue() + OFFSET);
 	}
 	
 	//	TO_STRING: [ENEL]     3.5    :
