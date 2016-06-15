@@ -23,7 +23,7 @@ public class Casuale {
 	 */
 	public static int randomInt(int min, int max) {
 		 int range = max + 1 - min;
-		 int random = extractor.nextInt(range);
+		 int random = extractor.nextInt(range);	//	Numero int casuale, compreso tra zero (incluso) e n (escluso) 
 		 return random + min;
 	}
 	
@@ -34,8 +34,8 @@ public class Casuale {
 	 * @return the random double value
 	 */
 	public static double randomDouble(double min, double max) {
-		double range = max + 1 - min;
-		double random = extractor.nextDouble();
+		double range = max - min;
+		double random = extractor.nextDouble();	//	Numero double casuale, compreso tra zero (incluso) e uno (escluso)
 		double result = range * random;
 		return result + min;
 	}

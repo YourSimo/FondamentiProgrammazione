@@ -16,8 +16,8 @@ import it.unibs.ing.fp.library.Formatting;
  */
 
 public class TitleList implements Serializable {
-	private static final String TITLE_FRAME = "ELENCO TITOLI";
-	private static final String [] NAME_HEADING = {"Titoli", "Valore Iniziale", "Valore Casuale"};
+	//	private static final String TITLE_FRAME = "ELENCO TITOLI";
+	//	private static final String [] NAME_HEADING = {"Titoli", "Valore Iniziale", "Valore Casuale"};
 
 	private Vector <Title> elencoTitoli;
 	
@@ -42,7 +42,7 @@ public class TitleList implements Serializable {
 	}
 	
 	//	TO_STRING
-	
+	/*
 	private static String heading() {
 		StringBuffer result = new StringBuffer();
 		result.append(Formatting.inColumn("", EquitiesMain.WIDTH_FIRST_COLUMN));
@@ -56,7 +56,8 @@ public class TitleList implements Serializable {
 		StringBuffer result = new StringBuffer();
 		result.append(Formatting.framing(TITLE_FRAME));
 		result.append(heading());
-		for(int i = 0; i < elencoTitoli.size(); i++) elencoTitoli.get(i).toString();
+		for(int i = 0; i < elencoTitoli.size(); i++) result.append(elencoTitoli.get(i).toString());
 		return result.toString();
 	}
+	*/
 }

@@ -17,12 +17,12 @@ import it.unibs.ing.fp.math.Casuale;
  */
 
 public class Title implements Serializable {
-	private static final double OFFSET = 3;
+	private static final double OFFSET = 0.1;
 
 	private static final String TITLE_FORMAT = "[%s] ";
 	
 	private String name;
-	private double initialValue;
+	private double initialValue;	// maggiore di 0
 	private double randomValue;
 	
 	/**
@@ -32,7 +32,7 @@ public class Title implements Serializable {
 	 */
 	public Title(String name, double initialValue) {
 		this.name = name;
-		this.initialValue = initialValue;
+		this.initialValue = initialValue;	// maggiore di zero
 		setRandomValue();
 	}
 	
@@ -63,25 +63,18 @@ public class Title implements Serializable {
 	}
 	
 	//	SETTERS
-
+	
 	public void setRandomValue() {
-		randomValue = Casuale.randomDouble(Math.max(0, initialValue - OFFSET), initialValue + OFFSET);
+		randomValue = Casuale.randomDouble(Math.max(0, getInitialValue() - OFFSET), getInitialValue() + OFFSET);
 	}
 	
-	//	TO_STRING [ENEL]     3.5    :
+	//	TO_STRING: [ENEL]     3.5    :
 	
 	@Override
 	public String toString() {
 		StringBuffer result = new StringBuffer();
-		/*
-		result.append(Formatting.inColumn(String.format(TITLE_FORMAT, name.toUpperCase()), EquitiesMain.WIDTH_FIRST_COLUMN));
-		result.append(Formatting.centered(String.valueOf(initialValue), EquitiesMain.WIDTH_OTHER_COLUMN));
-		//	result.append(Formatting.centered(String.valueOf(randomValue), EquitiesMain.WIDTH_OTHER_COLUMN));
-		 */
-		 
 		result.append(String.format(TITLE_FORMAT, name.toUpperCase()));
 		result.append(String.valueOf(initialValue));
-		
 		return result.toString();
 	}
 }
