@@ -34,13 +34,13 @@ public class EquitiesMain {
 	private static final String MSG_OUTRO = "A PRESTO";
 	
 	private static final String NAME_FILE_TITLE = "archiviotitoli.dat";
-	final private static String MSG_NO_CAST = "ATTENZIONE PROBLEMI CON IL CAST";
-	final private static String MSG_OK_FILE = "CARICAMENTO DA FILE EFFETTUATO";
-	final private static String MSG_NO_FILE = "NON POSSO CARICARE DA FILE: ESEGUO CREAZIONE DA ZERO";
-	final private static String MSG_INTRO_PORTFOLIO = "SITUAZIONE PORTAFOGLIO";
-	final private static String MSG_PROCEDI = "PROCEDERE CON LA SIMULAZIONE ?";
-	final private static String MSG_SALVA = "SALVATAGGIO DATI";
-	final private static String MSG_INTRO_GIORNO = "GIORNO N.%d NUOVA SITUAZIONE INVESTIMENTI";
+	private static final String MSG_NO_CAST = "ATTENZIONE PROBLEMI CON IL CAST";
+	private static final String MSG_OK_FILE = "CARICAMENTO DA FILE EFFETTUATO";
+	private static final String MSG_NO_FILE = "NON POSSO CARICARE DA FILE: ESEGUO CREAZIONE DA ZERO";
+	private static final String MSG_INTRO_PORTFOLIO = "SITUAZIONE PORTAFOGLIO";
+	private static final String MSG_PROCEDI = "PROCEDERE CON LA SIMULAZIONE ?";
+	private static final String MSG_SALVA = "SALVATAGGIO DATI";
+	private static final String MSG_INTRO_GIORNO = "GIORNO N.%d NUOVA SITUAZIONE INVESTIMENTI";
 	
 	private static Title makeTitle() {
 		String name = InputData.readStringNotEmpty(MSG_TITLE_NAME);
