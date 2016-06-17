@@ -20,7 +20,6 @@ import it.unibs.ing.fp.library.Menu;
 public class Wallet implements Serializable {
 	private static final String [] NAME_HEADING = {"Titoli", "Qtà", "Val.Inz.", "Val.Casuale"};
 	private static final String TITLE_FRAME = "PORTAFOGLIO DI ";
-	//	private static final String SUB_TITLE_FRAME = "-";
 	
 	private String name;
 	private TitleList elencoTitoli;

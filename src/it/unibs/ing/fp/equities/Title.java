@@ -18,7 +18,6 @@ import it.unibs.ing.fp.math.Casuale;
 
 public class Title implements Serializable {
 	private static final double OFFSET = 0.1;
-
 	private static final String TITLE_FORMAT = "[%s] ";
 	
 	private String name;
@@ -41,7 +40,6 @@ public class Title implements Serializable {
 	/**
 	 * @return the name
 	 */
-	
 	public String getName() {
 		return name.toUpperCase();
 	}
@@ -49,7 +47,6 @@ public class Title implements Serializable {
 	/**
 	 * @return the initialValue
 	 */
-	
 	public double getInitialValue() {
 		return initialValue;
 	}
@@ -57,7 +54,6 @@ public class Title implements Serializable {
 	/**
 	 * @return the randomValue
 	 */
-	
 	public double getRandomValue() {
 		return randomValue;
 	}
