@@ -43,27 +43,27 @@ public class TamagotchiMain {
 		do {
 			char operation = InputData.readCharLimitedNotSensitive(MSG_NEXT, VALID_CHAR);
 			switch(operation) {
-			case 'C' :
-			case 'c' :
-				int carezze = Casuale.randomInt(1,MAX_CAREZZE); 
-				ta.giveCarezze(carezze);
-				break;
-			case 'B' : 
-			case 'b' :
-				int biscotti = Casuale.randomInt(1,MAX_BISCOTTI);
-				ta.giveBiscotti(biscotti);
-				break;
-			case 'Q' : 
-			case 'q' :
-				finish = true;
-				break;
-			default :
-				System.out.println(CHOISE_ERR);
+				case 'C' :
+				case 'c' :
+					int carezze = Casuale.randomInt(1,MAX_CAREZZE); 
+					ta.giveCarezze(carezze);
+					break;
+				case 'B' : 
+				case 'b' :
+					int biscotti = Casuale.randomInt(1,MAX_BISCOTTI);
+					ta.giveBiscotti(biscotti);
+					break;
+				case 'Q' : 
+				case 'q' :
+					finish = true;
+					break;
+				default :
+					System.out.println(CHOISE_ERR);
 			}
-		if(!finish) {
-			System.out.println(ta.toString());
-			if(ta.isDied()) finish = true;
-		}
+			if(!finish) {
+				System.out.println(ta.toString());
+				if(ta.isDied()) finish = true;
+			}
 		} while(!finish);
 	}
 
